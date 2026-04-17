@@ -86,27 +86,28 @@ const onlinePlans = [
 const students = [
   {
     name: 'João Campello',
-    instrument: 'Guitarra Clássica',
-    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae426?w=800&q=80&fit=crop',
+    image: '/fotos/joao-campello.png',
     quote: '"A academia transformou a minha relação com a música."',
   },
   {
     name: 'Manuel Dinis',
-    instrument: 'Guitarra Elétrica',
-    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80&fit=crop',
+    image: '/fotos/manuel-dinis.png',
     quote: '"Subi ao palco pela primeira vez e foi inesquecível."',
   },
   {
     name: 'Francisca Borges',
-    instrument: 'Baixo',
-    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80&fit=crop',
+    image: '/fotos/francisca-borges.png',
     quote: '"Os professores adaptaram-se completamente ao meu ritmo."',
   },
   {
     name: 'Miguel Dinis',
-    instrument: 'Guitarra Acústica',
-    image: 'https://images.unsplash.com/photo-1501386761578-eaa54b8f3694?w=800&q=80&fit=crop',
+    image: '/fotos/miguel-dinis.jpg',
     quote: '"Das primeiras notas ao meu primeiro concerto em menos de um ano."',
+  },
+  {
+    name: 'Hugo Bronze',
+    image: '/fotos/hugo-bronze.png',
+    quote: '"A melhor decisão que tomei foi entrar para a academia."',
   },
 ];
 
@@ -115,19 +116,19 @@ const sinergiaFeatures = [
     title: 'COMUNIDADE BUNKER',
     description:
       'Ecossistema de músicos e artistas que podem aconselhar e ajudar os alunos da nossa academia.',
-    icon: '🎵',
+    image: '/fotos/comunidade-bunker.png',
   },
   {
     title: 'PRODUÇÃO AUDIOVISUAL',
     description:
       'Acesso a descontos na produção de áudio e vídeo com a nossa equipa audiovisual.',
-    icon: '🎬',
+    image: '/fotos/producao-audiovisual.jpg',
   },
   {
     title: 'OPORTUNIDADE DE PROFISSIONALIZAÇÃO',
     description:
       'Parcerias dinamizadoras que permitem ao aluno complementar o ensino com outras áreas igualmente importantes.',
-    icon: '🚀',
+    image: '/fotos/oportunidade-profissionalizacao.png',
   },
 ];
 ---
@@ -141,7 +142,7 @@ const sinergiaFeatures = [
     <!-- Background image -->
     <div class="absolute inset-0 z-0" aria-hidden="true">
       <img
-        src="https://images.unsplash.com/photo-1540039155733-5bb30b99f9f4?w=1920&q=80&fit=crop"
+        src="/fotos/homepage/1.png"
         alt=""
         class="w-full h-full object-cover object-center"
         loading="eager"
@@ -210,7 +211,7 @@ const sinergiaFeatures = [
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Metodologia Própria">
           <div class="aspect-[4/5] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80&fit=crop"
+              src="/fotos/metodologia-propria.jpg"
               alt="Professor ensinando guitarra a um aluno numa sala de aula"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -235,7 +236,7 @@ const sinergiaFeatures = [
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Performance Constante">
           <div class="aspect-[4/5] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1501386761578-eaa54b8f3694?w=800&q=80&fit=crop"
+              src="/fotos/performance-constante.png"
               alt="Músico a tocar no palco com luzes de concerto"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -258,7 +259,7 @@ const sinergiaFeatures = [
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Parcerias Dinamizadoras">
           <div class="aspect-[4/5] overflow-hidden">
             <img
-              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80&fit=crop"
+              src="/fotos/parcerias-dinamizadoras.jpg"
               alt="Músicos em colaboração num concerto ao vivo"
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               loading="lazy"
@@ -281,112 +282,89 @@ const sinergiaFeatures = [
     </div>
   </section>
 
-  <!-- ════════════ PRICING — PRESENCIAIS ════════════ -->
-  <section class="py-24 bg-[#080808]" aria-labelledby="pricing-presencial-title">
+  <!-- ════════════ PRICING ════════════ -->
+  <section class="py-24 bg-[#080808]" aria-labelledby="pricing-title">
     <div class="container mx-auto px-4 md:px-8 lg:px-12">
 
       <div class="text-center mb-16">
         <SectionDivider />
         <span class="section-label">Cursos</span>
-        <h2 id="pricing-presencial-title" class="section-title fade-in-up">CURSOS PRESENCIAIS</h2>
+        <h2 id="pricing-title" class="section-title fade-in-up">OS NOSSOS PLANOS</h2>
         <SectionDivider />
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto stagger-children">
-        {presencialPlans.map((plan) => (
-          <article
-            class={`relative flex flex-col p-8 border transition-all duration-300 fade-in-up ${
-              plan.popular
-                ? 'border-agp-red bg-agp-red/5 hover:bg-agp-red/10'
-                : 'border-white/15 bg-white/3 hover:border-white/30'
-            }`}
-            aria-label={`Plano ${plan.name} — ${plan.price}${plan.period}`}
-          >
-            {plan.popular && (
-              <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-agp-red px-6 py-1 whitespace-nowrap" aria-label="Plano mais popular">
-                <span class="font-heading text-white text-xs tracking-widest">⭐ MAIS POPULAR</span>
-              </div>
-            )}
+      <div class="max-w-4xl mx-auto fade-in pt-6">
+        <table class="w-full border-collapse" role="table" aria-label="Comparação de planos">
+          <thead>
+            <tr>
+              <th class="w-[30%] pb-6" scope="col"></th>
 
-            <h3 class="font-heading text-3xl text-white mb-2">{plan.name}</h3>
-            <div class="flex items-end gap-1 mb-6">
-              <span class="font-heading text-5xl text-agp-red">{plan.price}</span>
-              <span class="text-agp-muted text-lg mb-1">{plan.period}</span>
-            </div>
+              <!-- Básico -->
+              <th class="w-[23%] text-center border border-white/10 border-r-agp-red bg-white/3 px-4 pt-8 pb-6" scope="col">
+                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
+                <span class="font-heading text-2xl text-white tracking-widest block">BÁSICO</span>
+                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
+                <span class="font-heading text-4xl text-agp-red block">112€</span>
+                <span class="text-agp-muted text-xs tracking-widest">/MÊS</span>
+              </th>
 
-            <div class="double-divider mb-6"><span></span><span></span></div>
+              <!-- Músico (popular) -->
+              <th class="w-[23%] text-center border border-agp-red bg-agp-red/10 px-4 pb-6 relative" scope="col">
+                <div class="bg-agp-red py-2 px-4 -mx-px -mt-px mb-5 flex items-center justify-center gap-2">
+                  <span class="text-yellow-400 text-xs">★</span>
+                  <span class="font-heading text-white text-xs tracking-[0.2em]">MAIS POPULAR</span>
+                </div>
+                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
+                <span class="font-heading text-2xl text-white tracking-widest block">MÚSICO</span>
+                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
+                <span class="font-heading text-4xl text-agp-red block">140€</span>
+                <span class="text-agp-muted text-xs tracking-widest">/MÊS</span>
+              </th>
 
-            <ul class="flex flex-col gap-3 mb-8 flex-1" role="list">
-              {plan.features.map((f) => (
-                <li class="flex items-start gap-3 text-agp-muted text-sm">
-                  <span class="text-agp-red mt-0.5 shrink-0" aria-hidden="true">✓</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="/contactos"
-              class={`text-center font-heading tracking-widest uppercase py-3 px-6 transition-colors duration-300 ${
-                plan.popular
-                  ? 'bg-agp-red text-white hover:bg-agp-red-hover'
-                  : 'border border-white/30 text-white hover:border-agp-red hover:text-agp-red'
-              }`}
-              aria-label={`Inscrever no plano ${plan.name}`}
-            >
-              QUERO ESTE PLANO!
-            </a>
-          </article>
-        ))}
+              <!-- Pack -->
+              <th class="w-[23%] text-center border border-white/10 bg-white/3 px-4 pt-8 pb-6" scope="col">
+                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
+                <span class="font-heading text-2xl text-white tracking-widest block">PACK</span>
+                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
+                <span class="font-heading text-4xl text-agp-red block">130€</span>
+                <span class="text-agp-muted text-xs tracking-widest">/4 AULAS</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              { label: 'Modalidade',               basico: 'Presencial & Online', musico: 'Presencial & Online', pack: 'Presencial & Online' },
+              { label: 'Aulas por mês',            basico: '4 aulas de 1h',       musico: '8 aulas de 1h',       pack: 'À vontade' },
+              { label: 'Aulas individuais/mês',    basico: '4',                   musico: '4',                   pack: 'À vontade' },
+              { label: 'Aulas em turma/mês',       basico: '—',                   musico: '4',                   pack: '—' },
+              { label: 'Horário',                  basico: 'Fixo',                musico: 'Fixo',                pack: 'Flexível' },
+              { label: 'Cadeira Complementar',      basico: '—',                   musico: '✓',                   pack: '—' },
+              { label: 'Concertos & Jam Sessions',  basico: '✓',                   musico: '✓',                   pack: '✓' },
+              { label: 'Comunidade',                basico: '✓',                   musico: '✓',                   pack: '✓' },
+            ].map((row, i) => (
+              <tr class={`border-b border-white/10 transition-colors duration-150 hover:bg-white/3 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
+                <td class="py-4 px-2 text-agp-muted text-sm font-body tracking-wide">{row.label}</td>
+                <td class={`py-4 px-4 text-center text-sm border-x border-white/10 border-r-agp-red ${row.basico === '✓' ? 'text-agp-red font-heading text-xl' : row.basico === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.basico}</td>
+                <td class={`py-4 px-4 text-center text-sm border border-agp-red bg-agp-red/5 ${row.musico === '✓' ? 'text-agp-red font-heading text-xl' : row.musico === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.musico}</td>
+                <td class={`py-4 px-4 text-center text-sm border-x border-white/10 ${row.pack === '✓' ? 'text-agp-red font-heading text-xl' : row.pack === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.pack}</td>
+              </tr>
+            ))}
+            <!-- CTA row -->
+            <tr>
+              <td class="pt-8 pb-2"></td>
+              <td class="pt-8 pb-2 border-x border-white/10 border-r-agp-red text-center">
+                <a href="/contactos" class="inline-block border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+              </td>
+              <td class="pt-8 pb-2 border border-agp-red bg-agp-red/5 text-center">
+                <a href="/contactos" class="inline-block bg-agp-red text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:bg-agp-red-hover transition-colors duration-300">ESCOLHER</a>
+              </td>
+              <td class="pt-8 pb-2 border-x border-white/10 text-center">
+                <a href="/contactos" class="inline-block border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  </section>
-
-  <!-- ════════════ PRICING — ONLINE ════════════ -->
-  <section class="py-24 bg-agp-bg" aria-labelledby="pricing-online-title">
-    <div class="container mx-auto px-4 md:px-8 lg:px-12">
-
-      <div class="text-center mb-16">
-        <SectionDivider />
-        <span class="section-label">Online</span>
-        <h2 id="pricing-online-title" class="section-title fade-in-up">CURSOS ONLINE</h2>
-        <SectionDivider />
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto stagger-children">
-        {onlinePlans.map((plan) => (
-          <article
-            class="relative flex flex-col p-8 border border-white/15 bg-white/3 hover:border-white/30 transition-all duration-300 fade-in-up"
-            aria-label={`Plano Online ${plan.name} — ${plan.price}${plan.period}`}
-          >
-            <h3 class="font-heading text-3xl text-white mb-2">{plan.name}</h3>
-            <div class="flex items-end gap-1 mb-6">
-              <span class="font-heading text-5xl text-agp-red">{plan.price}</span>
-              <span class="text-agp-muted text-lg mb-1">{plan.period}</span>
-            </div>
-
-            <div class="double-divider mb-6"><span></span><span></span></div>
-
-            <ul class="flex flex-col gap-3 mb-8 flex-1" role="list">
-              {plan.features.map((f) => (
-                <li class="flex items-start gap-3 text-agp-muted text-sm">
-                  <span class="text-agp-red mt-0.5 shrink-0" aria-hidden="true">✓</span>
-                  {f}
-                </li>
-              ))}
-            </ul>
-
-            <a
-              href="/contactos"
-              class="text-center border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 hover:border-agp-red hover:text-agp-red transition-colors duration-300"
-              aria-label={`Inscrever no plano online ${plan.name}`}
-            >
-              QUERO ESTE PLANO!
-            </a>
-          </article>
-        ))}
-      </div>
-
     </div>
   </section>
 
@@ -417,11 +395,11 @@ const sinergiaFeatures = [
             data-index={i}
             role="listitem"
             tabindex="0"
-            aria-label={`${student.name} — ${student.instrument}`}
+            aria-label={student.name}
           >
             <img
               src={student.image}
-              alt={`${student.name}, aluno de ${student.instrument} na Academia de Guitarra do Porto`}
+              alt={`${student.name}, aluno na Academia de Guitarra do Porto`}
               class="w-full h-full object-cover object-center"
               loading="lazy"
               decoding="async"
@@ -431,7 +409,6 @@ const sinergiaFeatures = [
             <div class="item-detail">
               <p class="font-body text-agp-muted text-sm italic mb-3">{student.quote}</p>
               <h3 class="font-heading text-2xl text-white">{student.name}</h3>
-              <p class="text-agp-red font-heading tracking-widest text-sm">{student.instrument}</p>
             </div>
 
             <!-- Collapsed label -->
@@ -464,15 +441,151 @@ const sinergiaFeatures = [
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
         {sinergiaFeatures.map((feature) => (
-          <article class="text-center fade-in-up">
-            <div class="w-16 h-16 bg-agp-red/10 border border-agp-red/30 flex items-center justify-center mx-auto mb-6 text-2xl">
-              {feature.icon}
+          <article class="fade-in-up group">
+            <div class="aspect-[9/16] overflow-hidden mb-6">
+              <img
+                src={feature.image}
+                alt={feature.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <h3 class="font-heading text-xl text-white tracking-widest mb-4">{feature.title}</h3>
-            <div class="double-divider w-12 mx-auto mb-4"><span></span><span></span></div>
+            <div class="double-divider w-12 mb-4"><span></span><span></span></div>
             <p class="text-agp-muted leading-relaxed text-sm">{feature.description}</p>
           </article>
         ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ GOOGLE REVIEWS ════════════ -->
+  <section class="py-24 bg-[#080808]" aria-labelledby="reviews-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <!-- Header -->
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Google Reviews</span>
+        <h2 id="reviews-title" class="section-title fade-in-up">O QUE DIZEM<br class="hidden md:block" /> OS NOSSOS ALUNOS</h2>
+        <SectionDivider />
+
+        <!-- Rating summary -->
+        <div class="flex items-center justify-center gap-4 mt-8 fade-in-up">
+          <span class="font-heading text-6xl text-white">4.9</span>
+          <div class="flex flex-col items-start gap-1">
+            <div class="flex items-center gap-0.5" aria-label="4.9 de 5 estrelas">
+              {[1,2,3,4,5].map(() => (
+                <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+                </svg>
+              ))}
+            </div>
+            <p class="text-agp-muted text-sm tracking-widest uppercase font-heading">50 reviews no Google</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Great academy...really served by nice people with a lot of music on their blood. I would recommended to everyone who wants to learn music as electric guitar, portuguese guitar, drums, organ, voice, bass etc...join this academy and you will not regret..."</p>
+          <p class="font-heading text-white text-sm tracking-widest">Adriano Pimenta</p>
+        </article>
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Ajudaram-me a aprender a tocar guitarra em tempo recorde! O staff e professores são super simpáticos e as jam sessions são a cereja no topo do bolo."</p>
+          <p class="font-heading text-white text-sm tracking-widest">Sérgio de Sousa</p>
+        </article>
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Sou estudante de guitarra na Academia de Guitarra do Porto e, pessoalmente falando, não há nenhum outro projeto no país em que estamos que eu recomende mais do que este! Professores e direção excelentes, super empenhados no crescimento de cada aluno. Para além disto, a Academia fornece aos seus alunos diversas oportunidades que, a meu ver, são únicas."</p>
+          <p class="font-heading text-white text-sm tracking-widest">José Vilela</p>
+        </article>
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Excelente! Desde a qualidade de todo o pessoal e instalações, ao ambiente familiar e descontraído para todas as idades e nível de alunos. Vale mesmo a pena!"</p>
+          <p class="font-heading text-white text-sm tracking-widest">António Duarte</p>
+        </article>
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Uma escola que se preocupa por estar próxima do aluno e fazer por corresponder os temas aulas com o objetivo de cada um. Excelente!"</p>
+          <p class="font-heading text-white text-sm tracking-widest">Pedro Góis</p>
+        </article>
+
+        <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
+          <div class="flex items-center gap-0.5" aria-label="5 estrelas">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm leading-relaxed flex-1">"Uma escola com as oportunidades certas para crescer na música!"</p>
+          <p class="font-heading text-white text-sm tracking-widest">Sara Batista</p>
+        </article>
+
+      </div>
+
+      <!-- CTA full-width -->
+      <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 fade-in-up">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-0.5">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <p class="text-agp-muted text-sm">Mais de <span class="text-white font-heading">50 reviews</span> no Google Maps</p>
+        </div>
+        <a
+          href="https://www.google.com/maps/place/Academia+de+Guitarra+do+Porto+-+Powered+by+Bunker/@41.163499,-8.6492839,777m/data=!3m1!1e3!4m8!3m7!1s0xd24659b051e9457:0x8d8e4c4361c0aa3e!8m2!3d41.163495!4d-8.646709!9m1!1b1!16s%2Fg%2F11bwywg0nr"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-primary text-sm"
+          aria-label="Ver todas as reviews no Google Maps"
+        >
+          VER TODAS NO GOOGLE MAPS
+        </a>
       </div>
 
     </div>
@@ -482,7 +595,7 @@ const sinergiaFeatures = [
   <section class="relative py-24 overflow-hidden" aria-label="Chamada para ação">
     <div class="absolute inset-0 z-0" aria-hidden="true">
       <img
-        src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80&fit=crop"
+        src="/fotos/homepage/1.png"
         alt=""
         class="w-full h-full object-cover object-center"
         loading="lazy"
@@ -505,6 +618,54 @@ const sinergiaFeatures = [
           CONTACTA-NOS!
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ════════════ EXPERIENCE PACK ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="experience-title">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
+
+      <span class="section-label">Sem Compromisso</span>
+      <h2 id="experience-title" class="section-title fade-in-up mb-4">
+        EXPERIMENTA ANTES<br class="hidden md:block" /> DE TE INSCREVERES
+      </h2>
+      <div class="double-divider w-32 mx-auto">
+        <span></span>
+        <span></span>
+      </div>
+      <p class="text-agp-muted text-lg leading-relaxed max-w-2xl mx-auto mt-6 mb-16 fade-in-up">
+        Não tens a certeza se a Academia de Guitarra do Porto é para ti? Experimenta com um <strong class="text-white">Experience Pack</strong> — aulas avulsas sem qualquer compromisso de inscrição, para sentires o método e o ambiente antes de decidires.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-up stagger-children">
+        <!-- 1 aula -->
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">1 Aula</span>
+          <p class="font-heading text-6xl text-white leading-none">35<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Aula individual de 1h</p>
+        </div>
+        <!-- 2 aulas -->
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">2 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">55<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 15€ vs. avulso</p>
+        </div>
+        <!-- 3 aulas -->
+        <div class="card-dark border-agp-red/40 p-8 flex flex-col items-center gap-4 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-agp-red text-white font-heading text-xs tracking-widest uppercase px-4 py-1">Mais Popular</span>
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">3 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">75<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 30€ vs. avulso</p>
+        </div>
+      </div>
+
+      <div class="mt-12 fade-in-up">
+        <a href="/contactos" class="btn-primary-lg" aria-label="Comprar Experience Pack na Academia de Guitarra do Porto">
+          COMPRAR EXPERIENCE PACK
+        </a>
+        <p class="text-agp-muted text-sm mt-4">Sem inscrição. Sem mensalidade. Só música.</p>
+      </div>
+
     </div>
   </section>
 

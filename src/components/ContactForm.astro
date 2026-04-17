@@ -3,7 +3,7 @@ interface Props {
   bgImage?: string;
 }
 const {
-  bgImage = 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80&fit=crop',
+  bgImage = '/fotos/contact-bg.png',
 } = Astro.props;
 ---
 
@@ -20,7 +20,7 @@ const {
     <div class="absolute inset-0 bg-agp-bg/92"></div>
   </div>
 
-  <div class="relative z-10 container mx-auto px-4 md:px-8 max-w-2xl">
+  <div class="relative z-10 container mx-auto px-4 md:px-8 max-w-2xl" style="text-shadow: 0 2px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.7);">
 
     <!-- Header -->
     <div class="text-center mb-12 fade-in-up">
@@ -30,7 +30,7 @@ const {
         <span></span>
         <span></span>
       </div>
-      <p class="section-subtitle mt-4">APRENDE, TOCA E SOBE AO PALCO!</p>
+      <p class="font-heading text-white tracking-widest text-lg mt-4">APRENDE, TOCA E SOBE AO PALCO!</p>
     </div>
 
     <!-- Form -->
@@ -51,7 +51,7 @@ const {
             name="nome"
             required
             autocomplete="name"
-            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
             placeholder="O teu nome completo"
             aria-required="true"
           />
@@ -66,7 +66,7 @@ const {
             name="email"
             required
             autocomplete="email"
-            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
             placeholder="o.teu@email.com"
             aria-required="true"
           />
@@ -76,14 +76,16 @@ const {
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label for="telemovel" class="block text-agp-muted text-sm mb-1.5 font-body">
-            Telemóvel
+            Telemóvel <span class="text-agp-red" aria-hidden="true">*</span>
           </label>
           <input
             type="tel"
             id="telemovel"
             name="telemovel"
+            required
             autocomplete="tel"
-            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            aria-required="true"
+            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
             placeholder="+351 912 345 678"
           />
         </div>
@@ -95,7 +97,7 @@ const {
             id="assunto"
             name="assunto"
             required
-            class="w-full bg-[#0d0d0d] border border-white/20 text-white px-4 py-3 font-body transition-colors"
+            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors focus:border-agp-red focus:outline-none"
             aria-required="true"
           >
             <option value="" disabled selected class="bg-agp-bg text-agp-muted">
@@ -119,7 +121,7 @@ const {
           name="mensagem"
           rows="5"
           required
-          class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25 resize-none"
+          class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none resize-none"
           placeholder="Escreve a tua mensagem aqui..."
           aria-required="true"
         ></textarea>
@@ -203,7 +205,7 @@ const {
       const body = encodeURIComponent(
         `Nome: ${data.nome}\nEmail: ${data.email}\nTelemóvel: ${data.telemovel || 'N/A'}\nAssunto: ${data.assunto}\n\n${data.mensagem}`
       );
-      window.location.href = `mailto:info@academiadeguitarradoporto.pt?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:info@academiaguitarraporto.pt?subject=${subject}&body=${body}`;
     } finally {
       if (btnText) btnText.classList.remove('invisible');
       if (btnLoading) btnLoading.classList.add('hidden');

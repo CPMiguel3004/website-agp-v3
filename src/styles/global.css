@@ -167,6 +167,11 @@
   opacity: 1;
 }
 
+.h-accordion-item.active .item-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* Vertical accordion for instalações/jams */
 .v-accordion-content {
   max-height: 0;
