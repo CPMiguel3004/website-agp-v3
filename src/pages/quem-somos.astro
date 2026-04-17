@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const valores = [
+  {
+    title: 'RESPEITO E INCLUSÃO',
+    description:
+      'Criamos um ambiente seguro, diverso e motivador, onde toda a gente se sente bem vinda.',
+    icon: '♥',
+  },
+  {
+    title: 'COMPROMISSO COM A CULTURA',
+    description:
+      'Acreditamos no poder da arte para o bem-estar, a sociedade e o futuro. Queremos transmitir essa consciência a cada um dos nossos alunos.',
+    icon: '🎭',
+  },
+  {
+    title: 'PARTILHA E COMUNIDADE',
+    description:
+      'A música é feita em conjunto. Cultivamos a ligação entre alunos, professores e o mundo exterior.',
+    icon: '🤝',
+  },
+];
+---
+
+<BaseLayout
+  title="Quem Somos | Academia de Guitarra do Porto"
+  description="Conheça a Academia de Guitarra do Porto, aliada à Bunker Records. Formação musical de qualidade com apoio ao desenvolvimento artístico e profissional em Porto."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden" aria-label="Cabeçalho da página Quem Somos">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/70"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">EMPRESA</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none fade-in-up">
+        QUEM SOMOS
+      </h1>
+    </div>
+  </section>
+
+  <!-- ════════════ MAIN TEXT ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="about-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl">
+
+      <div class="text-center mb-12">
+        <SectionDivider />
+        <span class="section-label">A Nossa História</span>
+        <h2 id="about-title" class="section-title fade-in-up">A NOSSA ACADEMIA</h2>
+        <SectionDivider />
+      </div>
+
+      <div class="relative fade-in-up">
+        <!-- Red accent bar -->
+        <div class="absolute left-0 top-0 bottom-0 w-1 bg-agp-red hidden md:block" aria-hidden="true"></div>
+
+        <p class="text-agp-muted leading-loose text-lg md:pl-10">
+          Na <strong class="text-white">Academia de Guitarra do Porto</strong>, aliada à
+          <strong class="text-agp-red">BUNKER RECORDS</strong>, combinamos ensino musical de
+          qualidade com apoio real ao desenvolvimento artístico e profissional. Oferecemos formação
+          em diversos instrumentos e acompanhamos cada aluno desde as primeiras notas até aos palcos.
+        </p>
+
+        <p class="text-agp-muted leading-loose text-lg md:pl-10 mt-6">
+          Ajudamos a transformar ideias musicais em projetos completos, da composição à produção, da
+          gravação ao videoclip, com músicos e equipamentos profissionais. Também promovemos os
+          primeiros concertos ao vivo e damos apoio na divulgação junto de rádios e media.
+        </p>
+
+        <p class="text-agp-muted leading-loose text-lg md:pl-10 mt-6">
+          Se procuras uma <strong class="text-white">academia de música no Porto</strong> com foco em
+          formação, produção e carreira, este é o teu lugar.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ IMAGE BREAK ════════════ -->
+  <div class="h-64 md:h-80 overflow-hidden relative" aria-hidden="true">
+    <img
+      src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80&fit=crop"
+      alt=""
+      class="w-full h-full object-cover object-center"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-agp-bg/60"></div>
+  </div>
+
+  <!-- ════════════ VALORES ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="valores-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Os Nossos Valores</span>
+        <h2 id="valores-title" class="section-title fade-in-up">OS NOSSOS VALORES</h2>
+        <SectionDivider />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        {valores.map((valor) => (
+          <article class="card-dark p-8 text-center fade-in-up group hover:bg-agp-red/5 transition-colors duration-300">
+            <div class="w-16 h-16 bg-agp-red/10 border border-agp-red/30 flex items-center justify-center mx-auto mb-6 text-2xl group-hover:bg-agp-red/20 transition-colors duration-300">
+              {valor.icon}
+            </div>
+            <h3 class="font-heading text-xl text-white tracking-widest mb-4">{valor.title}</h3>
+            <div class="double-divider w-12 mx-auto mb-4"><span></span><span></span></div>
+            <p class="text-agp-muted leading-relaxed text-sm">{valor.description}</p>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ STATS STRIP ════════════ -->
+  <section class="py-16 bg-agp-red" aria-label="Estatísticas da academia">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <p class="font-heading text-5xl text-white">8+</p>
+          <p class="text-white/80 text-sm mt-1 tracking-widest uppercase font-heading">Salas de Aula</p>
+        </div>
+        <div>
+          <p class="font-heading text-5xl text-white">100+</p>
+          <p class="text-white/80 text-sm mt-1 tracking-widest uppercase font-heading">Alunos Formados</p>
+        </div>
+        <div>
+          <p class="font-heading text-5xl text-white">3</p>
+          <p class="text-white/80 text-sm mt-1 tracking-widest uppercase font-heading">Parceiros</p>
+        </div>
+        <div>
+          <p class="font-heading text-5xl text-white">1</p>
+          <p class="text-white/80 text-sm mt-1 tracking-widest uppercase font-heading">Estúdio Profissional</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT FORM ════════════ -->
+  <ContactForm />
+
+</BaseLayout>

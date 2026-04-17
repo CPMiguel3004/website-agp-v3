@@ -1,0 +1,222 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0d0d0d;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-agp-red text-white font-heading tracking-widest uppercase px-8 py-3 hover:bg-agp-red-hover transition-colors duration-300 inline-block cursor-pointer border-0;
+  }
+
+  .btn-primary-lg {
+    @apply bg-agp-red text-white font-heading tracking-widest uppercase px-10 py-4 text-lg hover:bg-agp-red-hover transition-colors duration-300 inline-block cursor-pointer border-0;
+  }
+
+  .double-divider {
+    @apply flex flex-col gap-1 w-full my-6;
+  }
+
+  .double-divider > span {
+    @apply block border-t border-white/15 w-full;
+  }
+
+  .section-label {
+    @apply font-heading text-agp-red tracking-widest text-sm uppercase mb-2 block;
+  }
+
+  .section-title {
+    @apply font-heading text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-none;
+  }
+
+  .section-subtitle {
+    @apply font-heading text-lg md:text-xl text-agp-muted tracking-widest uppercase leading-relaxed;
+  }
+
+  .card-dark {
+    @apply bg-white/5 border border-white/10 hover:border-white/25 transition-colors duration-300;
+  }
+}
+
+@layer utilities {
+  .text-shadow-red {
+    text-shadow: 0 0 20px rgba(192, 57, 43, 0.5);
+  }
+
+  .bg-hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(13, 13, 13, 0.3) 0%,
+      rgba(13, 13, 13, 0.6) 50%,
+      rgba(13, 13, 13, 0.9) 100%
+    );
+  }
+
+  .focus-red:focus {
+    outline: 2px solid #c0392b;
+    outline-offset: 2px;
+  }
+}
+
+/* Intersection Observer fade-in animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.fade-in.in-view {
+  opacity: 1;
+}
+
+/* Staggered children */
+.stagger-children > *:nth-child(1) { transition-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { transition-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
+
+/* Horizontal Image Accordion */
+.h-accordion {
+  display: flex;
+  height: 520px;
+  gap: 4px;
+}
+
+.h-accordion-item {
+  flex: 1;
+  min-width: 64px;
+  transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.h-accordion-item.active {
+  flex: 5;
+}
+
+.h-accordion-item .item-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.95) 0%, transparent 100%);
+  transition: opacity 0.3s ease;
+}
+
+.h-accordion-item:not(.active) .item-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 1.5rem 0.75rem;
+  background: linear-gradient(to right, rgba(13, 13, 13, 0.8) 0%, transparent 100%);
+}
+
+.h-accordion-item .item-detail {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  background: linear-gradient(to top, rgba(13, 13, 13, 0.95) 0%, rgba(13, 13, 13, 0.3) 60%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease 0.1s;
+}
+
+.h-accordion-item.active .item-detail {
+  opacity: 1;
+}
+
+/* Vertical accordion for instalações/jams */
+.v-accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.v-accordion-item.open .v-accordion-content {
+  max-height: 800px;
+}
+
+.v-accordion-trigger svg {
+  transition: transform 0.3s ease;
+}
+
+.v-accordion-item.open .v-accordion-trigger svg {
+  transform: rotate(45deg);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0392b;
+  border-radius: 0;
+}
+
+/* Form focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #c0392b !important;
+  box-shadow: 0 0 0 1px #c0392b;
+}
+
+/* Select dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23aaaaaa' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}

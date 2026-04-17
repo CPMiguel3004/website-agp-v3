@@ -1,0 +1,212 @@
+---
+interface Props {
+  bgImage?: string;
+}
+const {
+  bgImage = 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80&fit=crop',
+} = Astro.props;
+---
+
+<section class="relative py-24 overflow-hidden" id="contacto" aria-labelledby="contact-title">
+  <!-- Background -->
+  <div class="absolute inset-0 z-0" aria-hidden="true">
+    <img
+      src={bgImage}
+      alt=""
+      class="w-full h-full object-cover"
+      loading="lazy"
+      decoding="async"
+    />
+    <div class="absolute inset-0 bg-agp-bg/92"></div>
+  </div>
+
+  <div class="relative z-10 container mx-auto px-4 md:px-8 max-w-2xl">
+
+    <!-- Header -->
+    <div class="text-center mb-12 fade-in-up">
+      <span class="section-label">Contacto</span>
+      <h2 id="contact-title" class="section-title mb-4">JUNTA-TE A NÓS!</h2>
+      <div class="double-divider w-32 mx-auto">
+        <span></span>
+        <span></span>
+      </div>
+      <p class="section-subtitle mt-4">APRENDE, TOCA E SOBE AO PALCO!</p>
+    </div>
+
+    <!-- Form -->
+    <form
+      id="contact-form"
+      class="flex flex-col gap-5 fade-in-up"
+      novalidate
+      aria-label="Formulário de contacto"
+    >
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label for="nome" class="block text-agp-muted text-sm mb-1.5 font-body">
+            Nome <span class="text-agp-red" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            required
+            autocomplete="name"
+            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            placeholder="O teu nome completo"
+            aria-required="true"
+          />
+        </div>
+        <div>
+          <label for="email" class="block text-agp-muted text-sm mb-1.5 font-body">
+            Email <span class="text-agp-red" aria-hidden="true">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            autocomplete="email"
+            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            placeholder="o.teu@email.com"
+            aria-required="true"
+          />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+          <label for="telemovel" class="block text-agp-muted text-sm mb-1.5 font-body">
+            Telemóvel
+          </label>
+          <input
+            type="tel"
+            id="telemovel"
+            name="telemovel"
+            autocomplete="tel"
+            class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25"
+            placeholder="+351 912 345 678"
+          />
+        </div>
+        <div>
+          <label for="assunto" class="block text-agp-muted text-sm mb-1.5 font-body">
+            Assunto <span class="text-agp-red" aria-hidden="true">*</span>
+          </label>
+          <select
+            id="assunto"
+            name="assunto"
+            required
+            class="w-full bg-[#0d0d0d] border border-white/20 text-white px-4 py-3 font-body transition-colors"
+            aria-required="true"
+          >
+            <option value="" disabled selected class="bg-agp-bg text-agp-muted">
+              Seleciona um assunto
+            </option>
+            <option value="inscricao" class="bg-agp-bg">Inscrição</option>
+            <option value="informacoes" class="bg-agp-bg">Informações</option>
+            <option value="aula-experimental" class="bg-agp-bg">Aula Experimental</option>
+            <option value="parceria" class="bg-agp-bg">Parceria</option>
+            <option value="outro" class="bg-agp-bg">Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="mensagem" class="block text-agp-muted text-sm mb-1.5 font-body">
+          Mensagem <span class="text-agp-red" aria-hidden="true">*</span>
+        </label>
+        <textarea
+          id="mensagem"
+          name="mensagem"
+          rows="5"
+          required
+          class="w-full bg-white/5 border border-white/20 text-white px-4 py-3 font-body transition-colors placeholder-white/25 resize-none"
+          placeholder="Escreve a tua mensagem aqui..."
+          aria-required="true"
+        ></textarea>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-agp-red text-white font-heading tracking-widest uppercase py-4 text-lg hover:bg-agp-red-hover transition-colors duration-300 mt-2 relative"
+        aria-label="Enviar formulário de contacto"
+      >
+        <span id="btn-text">ENVIAR</span>
+        <span id="btn-loading" class="hidden absolute inset-0 flex items-center justify-center">
+          <svg class="animate-spin w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+          </svg>
+        </span>
+      </button>
+
+      <!-- Messages -->
+      <div
+        id="form-success"
+        class="hidden text-center text-green-400 font-body py-3 border border-green-400/30 bg-green-400/5"
+        role="alert"
+        aria-live="polite"
+      >
+        ✓ Mensagem enviada com sucesso! Entraremos em contacto brevemente.
+      </div>
+      <div
+        id="form-error"
+        class="hidden text-center text-agp-red font-body py-3 border border-agp-red/30 bg-agp-red/5"
+        role="alert"
+        aria-live="polite"
+      >
+        Ocorreu um erro. Por favor, tenta novamente ou contacta-nos diretamente.
+      </div>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successMsg = document.getElementById('form-success');
+  const errorMsg = document.getElementById('form-error');
+  const btnText = document.getElementById('btn-text');
+  const btnLoading = document.getElementById('btn-loading');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Show loading state
+    if (btnText) btnText.classList.add('invisible');
+    if (btnLoading) btnLoading.classList.remove('hidden');
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      // Replace with your Cloudflare Worker URL when deployed
+      const WORKER_URL = '/api/contact';
+      const response = await fetch(WORKER_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        successMsg?.classList.remove('hidden');
+        errorMsg?.classList.add('hidden');
+        form.reset();
+      } else {
+        throw new Error('Server responded with an error');
+      }
+    } catch {
+      // Fallback: mailto link
+      const subject = encodeURIComponent(`[AGP] ${data.assunto || 'Contacto'}`);
+      const body = encodeURIComponent(
+        `Nome: ${data.nome}\nEmail: ${data.email}\nTelemóvel: ${data.telemovel || 'N/A'}\nAssunto: ${data.assunto}\n\n${data.mensagem}`
+      );
+      window.location.href = `mailto:info@academiadeguitarradoporto.pt?subject=${subject}&body=${body}`;
+    } finally {
+      if (btnText) btnText.classList.remove('invisible');
+      if (btnLoading) btnLoading.classList.add('hidden');
+    }
+  });
+</script>

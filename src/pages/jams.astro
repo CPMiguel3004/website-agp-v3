@@ -1,0 +1,223 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const gallery = [
+  {
+    id: 'jam-1',
+    title: 'JAM SESSIONS MENSAIS',
+    description:
+      'Todos os meses organizamos jam sessions abertas onde alunos de todos os níveis se juntam num ambiente descontraído e criativo. É o momento certo para experimentar, falhar sem medo e descobrir novas formas de tocar.',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200&q=80&fit=crop',
+    imageAlt: 'Alunos da Academia de Guitarra do Porto numa jam session mensal',
+    features: ['Aberta a todos os níveis', 'Ambiente descontraído', 'Improvisação livre', 'Gravação disponível'],
+  },
+  {
+    id: 'jam-2',
+    title: 'CONCERTOS DE ALUNOS',
+    description:
+      'Os nossos concertos de alunos são momentos únicos de performance ao vivo, onde cada músico tem a oportunidade de mostrar o seu trabalho num contexto real de palco, com sistema de som profissional e plateia.',
+    image: 'https://images.unsplash.com/photo-1540039155733-5bb30b99f9f4?w=1200&q=80&fit=crop',
+    imageAlt: 'Concerto de alunos da Academia de Guitarra do Porto ao vivo no palco',
+    features: ['Palco profissional', 'Sistema de PA completo', 'Família e amigos convidados', 'Fotografia & Vídeo'],
+  },
+  {
+    id: 'jam-3',
+    title: 'WORKSHOPS E MASTERCLASSES',
+    description:
+      'Workshops temáticos e masterclasses com músicos convidados, onde os alunos aprofundam técnicas específicas, estilos musicais e desenvolvem novas competências de forma intensiva.',
+    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&q=80&fit=crop',
+    imageAlt: 'Workshop de guitarra na Academia de Guitarra do Porto com músico convidado',
+    features: ['Músicos convidados', 'Técnicas avançadas', 'Diferentes estilos', 'Material exclusivo'],
+  },
+];
+---
+
+<BaseLayout
+  title="Jams & Performances | Academia de Guitarra do Porto"
+  description="As jam sessions da Academia de Guitarra do Porto desenvolvem confiança, improvisação e interação musical. Concertos mensais, workshops e masterclasses em Porto."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden" aria-label="Cabeçalho Jams">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/70"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">PERFORMANCES</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none mb-4 fade-in-up">
+        JAMS
+      </h1>
+      <div class="double-divider w-24 mx-auto fade-in-up">
+        <span></span>
+        <span></span>
+      </div>
+      <p class="font-heading text-xl md:text-3xl text-agp-muted tracking-widest uppercase mt-6 fade-in-up">
+        TALENTO, CRIATIVIDADE E MÚSICA AO VIVO.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ INTRO ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="jams-intro">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl text-center">
+
+      <SectionDivider />
+      <span class="section-label">Porque as Jams São Essenciais</span>
+      <h2 id="jams-intro" class="section-title fade-in-up">O PALCO É<br class="hidden md:block" /> A NOSSA SALA DE AULA</h2>
+      <SectionDivider />
+
+      <p class="text-agp-muted leading-loose text-lg mt-8 max-w-3xl mx-auto fade-in-up">
+        As jam sessions da nossa academia são um elemento central do nosso método de ensino. Através
+        destas experiências ao vivo, os alunos desenvolvem <strong class="text-white">confiança</strong>,{' '}
+        <strong class="text-white">improvisação</strong> e{' '}
+        <strong class="text-white">interação musical</strong>, aplicando na prática o que aprendem nas aulas.
+      </p>
+      <p class="text-agp-muted leading-loose text-lg mt-4 max-w-3xl mx-auto fade-in-up">
+        Além de fortalecerem a técnica e a criatividade, as jams criam um ambiente colaborativo,
+        aproximam músicos de diferentes níveis e preparam-nos para atuações profissionais. Para nós,
+        é no palco que a verdadeira aprendizagem acontece.
+      </p>
+
+      <!-- Quick facts -->
+      <div class="grid grid-cols-3 gap-6 mt-16 stagger-children">
+        <div class="text-center fade-in-up">
+          <p class="font-heading text-5xl text-agp-red">12+</p>
+          <p class="text-agp-muted text-sm tracking-widest uppercase font-heading mt-1">Jams por Ano</p>
+        </div>
+        <div class="text-center fade-in-up">
+          <p class="font-heading text-5xl text-agp-red">50+</p>
+          <p class="text-agp-muted text-sm tracking-widest uppercase font-heading mt-1">Músicos em Palco</p>
+        </div>
+        <div class="text-center fade-in-up">
+          <p class="font-heading text-5xl text-agp-red">100%</p>
+          <p class="text-agp-muted text-sm tracking-widest uppercase font-heading mt-1">Experiência Real</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ GALLERY ACCORDION ════════════ -->
+  <section class="py-12 bg-[#080808]" aria-label="Galeria de jams e eventos">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div id="jams-accordion" class="flex flex-col gap-2">
+        {gallery.map((item, i) => (
+          <div
+            class={`v-accordion-item border border-white/10 overflow-hidden ${i === 0 ? 'open' : ''}`}
+            id={item.id}
+          >
+            <button
+              class="v-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-white/3 transition-colors duration-200 group"
+              aria-expanded={i === 0 ? 'true' : 'false'}
+              aria-controls={`content-${item.id}`}
+              type="button"
+            >
+              <div class="flex items-center gap-4">
+                <span class="font-heading text-agp-red text-lg tracking-widest w-8 shrink-0">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 class="font-heading text-2xl md:text-3xl text-white tracking-widest group-hover:text-agp-red transition-colors duration-200">
+                  {item.title}
+                </h3>
+              </div>
+              <svg class="w-6 h-6 text-agp-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14m7-7H5"/>
+              </svg>
+            </button>
+
+            <div class="v-accordion-content" id={`content-${item.id}`} role="region" aria-label={item.title}>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div class="aspect-video md:aspect-auto overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <div class="p-8 md:p-12 flex flex-col justify-center">
+                  <p class="text-agp-muted leading-relaxed text-base mb-8">{item.description}</p>
+                  <ul class="flex flex-col gap-3" role="list">
+                    {item.features.map((f) => (
+                      <li class="flex items-center gap-3 text-sm">
+                        <span class="text-agp-red shrink-0" aria-hidden="true">●</span>
+                        <span class="text-agp-muted">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <a
+                    href="/contactos"
+                    class="btn-primary mt-8 self-start"
+                    aria-label={`Inscrever em ${item.title}`}
+                  >
+                    QUERO PARTICIPAR
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ QUOTE BANNER ════════════ -->
+  <section class="relative py-24 overflow-hidden" aria-label="Citação sobre performance">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1501386761578-eaa54b8f3694?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/82"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 md:px-8 text-center max-w-3xl">
+      <div class="double-divider w-16 mx-auto mb-8"><span></span><span></span></div>
+      <blockquote class="font-heading text-3xl md:text-5xl text-white uppercase leading-tight fade-in-up">
+        "É NO PALCO QUE A VERDADEIRA APRENDIZAGEM ACONTECE."
+      </blockquote>
+      <div class="double-divider w-16 mx-auto mt-8"><span></span><span></span></div>
+      <p class="text-agp-red font-heading tracking-widest text-sm mt-6">ACADEMIA DE GUITARRA DO PORTO</p>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT FORM ════════════ -->
+  <ContactForm />
+
+</BaseLayout>
+
+<script>
+  const accordionItems = document.querySelectorAll<HTMLElement>('.v-accordion-item');
+
+  accordionItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.v-accordion-trigger');
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      accordionItems.forEach((i) => {
+        i.classList.remove('open');
+        i.querySelector('.v-accordion-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

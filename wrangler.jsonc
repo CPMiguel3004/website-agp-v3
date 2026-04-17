@@ -1,0 +1,13 @@
+{
+  // Cloudflare Pages deployment configuration for Academia de Guitarra do Porto
+  "name": "website-agp-v3",
+  "compatibility_date": "2024-09-23",
+  "pages_build_output_dir": "dist",
+
+  // Cloudflare Workers contact form handler (optional)
+  // Uncomment and configure to enable server-side form handling
+  // "vars": {
+  //   "TO_EMAIL": "info@academiadeguitarradoporto.pt",
+  //   "FROM_EMAIL": "noreply@academiadeguitarradoporto.pt"
+  // }
+}

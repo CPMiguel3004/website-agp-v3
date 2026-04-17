@@ -1,0 +1,539 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const presencialPlans = [
+  {
+    name: 'Básico',
+    price: '112€',
+    period: '/Mês',
+    popular: false,
+    features: [
+      '4 aulas de 1h/mês',
+      'Horário fixo',
+      'Aulas individuais',
+      'Concertos & Jam Sessions',
+      'Comunidade',
+    ],
+  },
+  {
+    name: 'Músico',
+    price: '140€',
+    period: '/Mês',
+    popular: true,
+    features: [
+      '8 aulas de 1h/mês',
+      'Horário fixo',
+      'Aulas individuais + Cadeira Complementar',
+      'Concertos & Jam Sessions',
+      'Comunidade',
+    ],
+  },
+  {
+    name: 'Pack',
+    price: '130€',
+    period: '/4 Aulas',
+    popular: false,
+    features: [
+      'Aula individual',
+      'Agenda quando quiseres',
+      'Concertos & Jam Sessions',
+      'Comunidade',
+    ],
+  },
+];
+
+const onlinePlans = [
+  {
+    name: 'Básico',
+    price: '115€',
+    period: '/Mês',
+    popular: false,
+    features: [
+      '4 aulas online de 1h/mês',
+      'Horário flexível',
+      'Aulas gravadas + materiais digitais',
+      'Workshops online exclusivos',
+    ],
+  },
+  {
+    name: 'Músico',
+    price: '140€',
+    period: '/Mês',
+    popular: false,
+    features: [
+      '8 aulas online de 1h/mês',
+      'Horário flexível',
+      'Aulas individuais + Cadeira Complementar',
+      'Aulas gravadas',
+      'Workshops online',
+    ],
+  },
+  {
+    name: 'Pack',
+    price: '145€',
+    period: '/4 Aulas',
+    popular: false,
+    features: [
+      'Flexibilidade total',
+      'Aulas gravadas',
+      'Ideal para experimentar sem compromisso',
+    ],
+  },
+];
+
+const students = [
+  {
+    name: 'João Campello',
+    instrument: 'Guitarra Clássica',
+    image: 'https://images.unsplash.com/photo-1508700115892-45ecd05ae426?w=800&q=80&fit=crop',
+    quote: '"A academia transformou a minha relação com a música."',
+  },
+  {
+    name: 'Manuel Dinis',
+    instrument: 'Guitarra Elétrica',
+    image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80&fit=crop',
+    quote: '"Subi ao palco pela primeira vez e foi inesquecível."',
+  },
+  {
+    name: 'Francisca Borges',
+    instrument: 'Baixo',
+    image: 'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&q=80&fit=crop',
+    quote: '"Os professores adaptaram-se completamente ao meu ritmo."',
+  },
+  {
+    name: 'Miguel Dinis',
+    instrument: 'Guitarra Acústica',
+    image: 'https://images.unsplash.com/photo-1501386761578-eaa54b8f3694?w=800&q=80&fit=crop',
+    quote: '"Das primeiras notas ao meu primeiro concerto em menos de um ano."',
+  },
+];
+
+const sinergiaFeatures = [
+  {
+    title: 'COMUNIDADE BUNKER',
+    description:
+      'Ecossistema de músicos e artistas que podem aconselhar e ajudar os alunos da nossa academia.',
+    icon: '🎵',
+  },
+  {
+    title: 'PRODUÇÃO AUDIOVISUAL',
+    description:
+      'Acesso a descontos na produção de áudio e vídeo com a nossa equipa audiovisual.',
+    icon: '🎬',
+  },
+  {
+    title: 'OPORTUNIDADE DE PROFISSIONALIZAÇÃO',
+    description:
+      'Parcerias dinamizadoras que permitem ao aluno complementar o ensino com outras áreas igualmente importantes.',
+    icon: '🚀',
+  },
+];
+---
+
+<BaseLayout
+  title="Academia de Guitarra do Porto | Aprende Música em Porto"
+  description="A Academia de Guitarra do Porto, powered by Bunker Records, oferece formação musical de qualidade em Porto. Do zero à tua primeira música em apenas 1 mês. Inscreve-te já!"
+>
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Secção principal">
+    <!-- Background image -->
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1540039155733-5bb30b99f9f4?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-hero-overlay"></div>
+      <div class="absolute inset-0 bg-agp-bg/40"></div>
+    </div>
+
+    <!-- Red glow accent -->
+    <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-64 bg-agp-red/10 blur-[80px] rounded-full pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 container mx-auto px-4 md:px-8 text-center pt-32 pb-24">
+      <p class="section-label text-center mb-4 fade-in-up">Porto, Portugal</p>
+
+      <h1 class="font-heading text-6xl md:text-8xl lg:text-9xl text-white uppercase leading-none mb-6 fade-in-up [animation-delay:0.1s]" style="text-shadow: 0 2px 40px rgba(0,0,0,0.8);">
+        APRENDE MÚSICA<br class="hidden md:block" />
+        <span class="text-agp-red">DE FORMA PRÁTICA</span><br class="hidden md:block" />
+        E AO TEU RITMO
+      </h1>
+
+      <div class="double-divider w-24 mx-auto fade-in-up [animation-delay:0.2s]">
+        <span></span>
+        <span></span>
+      </div>
+
+      <p class="font-heading text-xl md:text-2xl lg:text-3xl text-agp-muted tracking-widest uppercase mt-6 mb-10 fade-in-up [animation-delay:0.3s]">
+        DO ZERO À TUA PRIMEIRA MÚSICA EM APENAS 1 MÊS.
+      </p>
+
+      <div class="fade-in-up [animation-delay:0.4s]">
+        <a href="/contactos" class="btn-primary-lg" aria-label="Começa a aprender guitarra agora">
+          COMEÇA AGORA!
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce" aria-hidden="true">
+      <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ════════════ O QUE NOS DIFERENCIA ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="diferencia-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">O Que Nos Diferencia?</span>
+        <h2 id="diferencia-title" class="section-title fade-in-up">O QUE NOS<br class="hidden md:block" /> DIFERENCIA?</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 max-w-3xl mx-auto fade-in-up">
+          APOSTAMOS NUMA METODOLOGIA PRÓPRIA, PERFORMANCES CONSTANTES E PARCERIAS DINAMIZADORAS.
+        </p>
+      </div>
+
+      <!-- 3 Feature cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+
+        <!-- Card 1 -->
+        <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Metodologia Própria">
+          <div class="aspect-[4/5] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80&fit=crop"
+              alt="Professor ensinando guitarra a um aluno numa sala de aula"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <!-- Default label -->
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
+            <h3 class="font-heading text-2xl text-white tracking-widest">METODOLOGIA PRÓPRIA</h3>
+          </div>
+          <!-- Hover overlay -->
+          <div class="absolute inset-0 bg-agp-bg/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+            <h3 class="font-heading text-3xl text-white tracking-widest mb-4">METODOLOGIA PRÓPRIA</h3>
+            <div class="double-divider w-16 mx-auto mb-4"><span></span><span></span></div>
+            <p class="text-agp-muted leading-relaxed">Adaptamos os nossos métodos de ensino ao aluno, tendo em conta os seus objetivos.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Performance Constante">
+          <div class="aspect-[4/5] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1501386761578-eaa54b8f3694?w=800&q=80&fit=crop"
+              alt="Músico a tocar no palco com luzes de concerto"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
+            <h3 class="font-heading text-2xl text-white tracking-widest">PERFORMANCE CONSTANTE</h3>
+          </div>
+          <div class="absolute inset-0 bg-agp-bg/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+            <h3 class="font-heading text-3xl text-white tracking-widest mb-4">PERFORMANCE CONSTANTE</h3>
+            <div class="double-divider w-16 mx-auto mb-4"><span></span><span></span></div>
+            <p class="text-agp-muted leading-relaxed">Apostamos em performances constantes para que o aluno possa evoluir mais rápido e para que possa tornar o palco o seu habitat.</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Parcerias Dinamizadoras">
+          <div class="aspect-[4/5] overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80&fit=crop"
+              alt="Músicos em colaboração num concerto ao vivo"
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
+              width="800"
+              height="1000"
+            />
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
+            <h3 class="font-heading text-2xl text-white tracking-widest">PARCERIAS DINAMIZADORAS</h3>
+          </div>
+          <div class="absolute inset-0 bg-agp-bg/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+            <h3 class="font-heading text-3xl text-white tracking-widest mb-4">PARCERIAS DINAMIZADORAS</h3>
+            <div class="double-divider w-16 mx-auto mb-4"><span></span><span></span></div>
+            <p class="text-agp-muted leading-relaxed">Parcerias dinamizadoras que permitem ao aluno complementar o ensino com outras áreas igualmente importantes.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PRICING — PRESENCIAIS ════════════ -->
+  <section class="py-24 bg-[#080808]" aria-labelledby="pricing-presencial-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Cursos</span>
+        <h2 id="pricing-presencial-title" class="section-title fade-in-up">CURSOS PRESENCIAIS</h2>
+        <SectionDivider />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto stagger-children">
+        {presencialPlans.map((plan) => (
+          <article
+            class={`relative flex flex-col p-8 border transition-all duration-300 fade-in-up ${
+              plan.popular
+                ? 'border-agp-red bg-agp-red/5 hover:bg-agp-red/10'
+                : 'border-white/15 bg-white/3 hover:border-white/30'
+            }`}
+            aria-label={`Plano ${plan.name} — ${plan.price}${plan.period}`}
+          >
+            {plan.popular && (
+              <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-agp-red px-6 py-1 whitespace-nowrap" aria-label="Plano mais popular">
+                <span class="font-heading text-white text-xs tracking-widest">⭐ MAIS POPULAR</span>
+              </div>
+            )}
+
+            <h3 class="font-heading text-3xl text-white mb-2">{plan.name}</h3>
+            <div class="flex items-end gap-1 mb-6">
+              <span class="font-heading text-5xl text-agp-red">{plan.price}</span>
+              <span class="text-agp-muted text-lg mb-1">{plan.period}</span>
+            </div>
+
+            <div class="double-divider mb-6"><span></span><span></span></div>
+
+            <ul class="flex flex-col gap-3 mb-8 flex-1" role="list">
+              {plan.features.map((f) => (
+                <li class="flex items-start gap-3 text-agp-muted text-sm">
+                  <span class="text-agp-red mt-0.5 shrink-0" aria-hidden="true">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="/contactos"
+              class={`text-center font-heading tracking-widest uppercase py-3 px-6 transition-colors duration-300 ${
+                plan.popular
+                  ? 'bg-agp-red text-white hover:bg-agp-red-hover'
+                  : 'border border-white/30 text-white hover:border-agp-red hover:text-agp-red'
+              }`}
+              aria-label={`Inscrever no plano ${plan.name}`}
+            >
+              QUERO ESTE PLANO!
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PRICING — ONLINE ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="pricing-online-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Online</span>
+        <h2 id="pricing-online-title" class="section-title fade-in-up">CURSOS ONLINE</h2>
+        <SectionDivider />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto stagger-children">
+        {onlinePlans.map((plan) => (
+          <article
+            class="relative flex flex-col p-8 border border-white/15 bg-white/3 hover:border-white/30 transition-all duration-300 fade-in-up"
+            aria-label={`Plano Online ${plan.name} — ${plan.price}${plan.period}`}
+          >
+            <h3 class="font-heading text-3xl text-white mb-2">{plan.name}</h3>
+            <div class="flex items-end gap-1 mb-6">
+              <span class="font-heading text-5xl text-agp-red">{plan.price}</span>
+              <span class="text-agp-muted text-lg mb-1">{plan.period}</span>
+            </div>
+
+            <div class="double-divider mb-6"><span></span><span></span></div>
+
+            <ul class="flex flex-col gap-3 mb-8 flex-1" role="list">
+              {plan.features.map((f) => (
+                <li class="flex items-start gap-3 text-agp-muted text-sm">
+                  <span class="text-agp-red mt-0.5 shrink-0" aria-hidden="true">✓</span>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href="/contactos"
+              class="text-center border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 hover:border-agp-red hover:text-agp-red transition-colors duration-300"
+              aria-label={`Inscrever no plano online ${plan.name}`}
+            >
+              QUERO ESTE PLANO!
+            </a>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ DE ALUNOS A MÚSICOS ════════════ -->
+  <section class="py-24 bg-[#080808] overflow-hidden" aria-labelledby="students-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Os Nossos Alunos</span>
+        <h2 id="students-title" class="section-title fade-in-up">DE ALUNOS A<br class="hidden md:block" /> MÚSICOS DE SUCESSO</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 fade-in-up">
+          HISTÓRIAS REAIS DE QUEM JÁ TRANSFORMOU A SUA PAIXÃO EM ARTE.
+        </p>
+      </div>
+
+      <!-- Horizontal Accordion -->
+      <div
+        class="h-accordion fade-in"
+        id="student-accordion"
+        role="list"
+        aria-label="Histórias de alunos"
+      >
+        {students.map((student, i) => (
+          <div
+            class={`h-accordion-item ${i === 0 ? 'active' : ''}`}
+            data-index={i}
+            role="listitem"
+            tabindex="0"
+            aria-label={`${student.name} — ${student.instrument}`}
+          >
+            <img
+              src={student.image}
+              alt={`${student.name}, aluno de ${student.instrument} na Academia de Guitarra do Porto`}
+              class="w-full h-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
+            />
+
+            <!-- Detail (shown when active) -->
+            <div class="item-detail">
+              <p class="font-body text-agp-muted text-sm italic mb-3">{student.quote}</p>
+              <h3 class="font-heading text-2xl text-white">{student.name}</h3>
+              <p class="text-agp-red font-heading tracking-widest text-sm">{student.instrument}</p>
+            </div>
+
+            <!-- Collapsed label -->
+            <div class="item-label" aria-hidden="true">
+              <span class="font-heading text-white text-sm tracking-widest">{student.name}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ SINERGIA BUNKER ════════════ -->
+  <section class="py-24 bg-agp-bg relative overflow-hidden" aria-labelledby="sinergia-title">
+    <!-- Red glow -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-agp-red/5 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Ecossistema</span>
+        <h2 id="sinergia-title" class="section-title fade-in-up">SINERGIA BUNKER</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 max-w-3xl mx-auto fade-in-up">
+          APOSTAMOS NUMA METODOLOGIA PRÓPRIA, PERFORMANCES CONSTANTES E PARCERIAS DINAMIZADORAS.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
+        {sinergiaFeatures.map((feature) => (
+          <article class="text-center fade-in-up">
+            <div class="w-16 h-16 bg-agp-red/10 border border-agp-red/30 flex items-center justify-center mx-auto mb-6 text-2xl">
+              {feature.icon}
+            </div>
+            <h3 class="font-heading text-xl text-white tracking-widest mb-4">{feature.title}</h3>
+            <div class="double-divider w-12 mx-auto mb-4"><span></span><span></span></div>
+            <p class="text-agp-muted leading-relaxed text-sm">{feature.description}</p>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ CTA BANNER ════════════ -->
+  <section class="relative py-24 overflow-hidden" aria-label="Chamada para ação">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/85"></div>
+      <div class="absolute inset-0 bg-gradient-to-r from-agp-red/10 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 container mx-auto px-4 md:px-8 text-center">
+      <h2 class="font-heading text-5xl md:text-7xl text-white uppercase leading-none mb-6 fade-in-up">
+        PRONTO PARA FAZER PARTE<br class="hidden md:block" />
+        <span class="text-agp-red">DA NOSSA ACADEMIA?</span>
+      </h2>
+      <p class="text-agp-muted text-lg md:text-xl mb-10 max-w-2xl mx-auto fade-in-up">
+        Acreditamos que a música transforma vidas, e a tua pode ser a próxima!
+      </p>
+      <div class="fade-in-up">
+        <a href="/contactos" class="btn-primary-lg" aria-label="Contactar a Academia de Guitarra do Porto">
+          CONTACTA-NOS!
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT FORM ════════════ -->
+  <ContactForm />
+
+</BaseLayout>
+
+<script>
+  // Horizontal student accordion
+  const accordion = document.getElementById('student-accordion');
+  if (accordion) {
+    const items = accordion.querySelectorAll<HTMLElement>('.h-accordion-item');
+
+    function activate(index: number) {
+      items.forEach((item, i) => {
+        if (i === index) item.classList.add('active');
+        else item.classList.remove('active');
+      });
+    }
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => activate(i));
+      item.addEventListener('keydown', (e: KeyboardEvent) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activate(i);
+        }
+      });
+    });
+  }
+</script>

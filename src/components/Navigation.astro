@@ -1,0 +1,178 @@
+---
+const navLinks = [
+  { href: '/quem-somos', label: 'QUEM SOMOS' },
+  { href: '/instalacoes', label: 'INSTALAÇÕES' },
+  { href: '/parceiros', label: 'PARCEIROS' },
+  { href: '/jams', label: 'JAMS' },
+  { href: '/contactos', label: 'CONTACTOS' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<!-- Skip to main content for accessibility -->
+<a
+  href="#main-content"
+  class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-agp-red focus:text-white focus:px-4 focus:py-2 focus:font-heading focus:tracking-widest"
+>
+  Saltar para o conteúdo principal
+</a>
+
+<header
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-400 bg-transparent"
+  role="banner"
+>
+  <div class="container mx-auto px-4 md:px-8 lg:px-12">
+    <div class="flex items-center justify-between h-20 md:h-24">
+
+      <!-- Logo -->
+      <a
+        href="/"
+        class="flex items-center gap-3 group shrink-0"
+        aria-label="Academia de Guitarra do Porto — Página Principal"
+      >
+        <div
+          class="w-10 h-10 md:w-12 md:h-12 bg-agp-red flex items-center justify-center font-heading text-white text-xl md:text-2xl font-bold shrink-0 group-hover:bg-agp-red-hover transition-colors duration-300"
+          aria-hidden="true"
+        >
+          NK
+        </div>
+        <div class="flex flex-col leading-none">
+          <span class="font-heading text-white text-xs md:text-sm tracking-wider uppercase">
+            Academia de Guitarra do Porto
+          </span>
+          <span class="text-agp-muted text-[10px] md:text-xs tracking-widest uppercase mt-0.5">
+            Powered by Bunker
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-6 xl:gap-8" aria-label="Navegação principal">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class={`font-heading tracking-widest text-sm transition-colors duration-200 hover:text-agp-red relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-agp-red after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left ${
+              currentPath.startsWith(link.href)
+                ? 'text-agp-red after:scale-x-100'
+                : 'text-white'
+            }`}
+            aria-current={currentPath.startsWith(link.href) ? 'page' : undefined}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href="/contactos"
+          class="btn-primary text-sm py-2 px-6 ml-2"
+          aria-label="Inscreve-te na Academia de Guitarra do Porto"
+        >
+          INSCREVE-TE
+        </a>
+      </nav>
+
+      <!-- Mobile Hamburger -->
+      <button
+        id="hamburger"
+        class="lg:hidden flex flex-col gap-1.5 p-2 z-[60]"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        type="button"
+      >
+        <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+        <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300"></span>
+        <span class="ham-line block w-6 h-0.5 bg-white transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-40 bg-agp-bg/98 flex-col items-center justify-center hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navegação móvel"
+>
+  <nav class="flex flex-col items-center gap-8" aria-label="Navegação móvel">
+    <a href="/" class="font-heading text-3xl tracking-widest text-white hover:text-agp-red transition-colors duration-200">
+      INÍCIO
+    </a>
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`font-heading text-3xl tracking-widest transition-colors duration-200 hover:text-agp-red ${
+          currentPath.startsWith(link.href) ? 'text-agp-red' : 'text-white'
+        }`}
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="/contactos" class="btn-primary-lg mt-4">INSCREVE-TE</a>
+  </nav>
+</div>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const hamLines = document.querySelectorAll<HTMLElement>('.ham-line');
+
+  // Scroll behavior: transparent → solid
+  function updateNavbar() {
+    if (!navbar) return;
+    if (window.scrollY > 60) {
+      navbar.classList.add('bg-agp-bg', 'shadow-2xl');
+      navbar.classList.remove('bg-transparent');
+    } else {
+      navbar.classList.remove('bg-agp-bg', 'shadow-2xl');
+      navbar.classList.add('bg-transparent');
+    }
+  }
+
+  window.addEventListener('scroll', updateNavbar, { passive: true });
+  updateNavbar();
+
+  // Mobile menu toggle
+  function openMenu() {
+    mobileMenu?.classList.remove('hidden');
+    mobileMenu?.classList.add('flex');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    // Animate hamburger to X
+    if (hamLines[0]) { hamLines[0].style.transform = 'translateY(8px) rotate(45deg)'; }
+    if (hamLines[1]) { hamLines[1].style.opacity = '0'; }
+    if (hamLines[2]) { hamLines[2].style.transform = 'translateY(-8px) rotate(-45deg)'; }
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add('hidden');
+    mobileMenu?.classList.remove('flex');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (hamLines[0]) { hamLines[0].style.transform = ''; }
+    if (hamLines[1]) { hamLines[1].style.opacity = ''; }
+    if (hamLines[2]) { hamLines[2].style.transform = ''; }
+  }
+
+  hamburger?.addEventListener('click', () => {
+    const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+    if (isOpen) closeMenu();
+    else openMenu();
+  });
+
+  // Close on link click
+  mobileMenu?.querySelectorAll('a').forEach((link) =>
+    link.addEventListener('click', closeMenu)
+  );
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && hamburger?.getAttribute('aria-expanded') === 'true') {
+      closeMenu();
+    }
+  });
+</script>

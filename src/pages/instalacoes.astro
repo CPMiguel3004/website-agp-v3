@@ -1,0 +1,190 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const instalacoes = [
+  {
+    id: 'salas-de-aula',
+    title: 'SALAS DE AULA',
+    description:
+      'As nossas 8 salas de aula são totalmente equipadas, com acústica tratada e preparadas para o ensino individual e em grupo. Cada sala dispõe de instrumentos de alta qualidade, amplificadores, cadeiras ergonómicas e luz natural, criando o ambiente ideal para o aprendizado musical.',
+    image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=1200&q=80&fit=crop',
+    imageAlt: 'Sala de aula com instrumentos musicais e equipamento de ensino na Academia de Guitarra do Porto',
+    features: ['8 salas equipadas', 'Acústica tratada', 'Instrumentos profissionais', 'Ensino individual e em grupo'],
+  },
+  {
+    id: 'estudio-de-gravacao',
+    title: 'ESTÚDIO DE GRAVAÇÃO',
+    description:
+      'O nosso estúdio de gravação profissional conta com régie e sala de captação separada, onde os nossos alunos podem gravar os seus projetos com qualidade de estúdio. Equipado com os melhores microfones, pré-amplificadores e software de produção musical, o estúdio é um espaço único para transformar ideias em música.',
+    image: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&q=80&fit=crop',
+    imageAlt: 'Estúdio de gravação profissional com consola de mistura e equipamento de alta qualidade',
+    features: ['Régie profissional', 'Sala de captação separada', 'Microfones de alta qualidade', 'Software de produção'],
+  },
+  {
+    id: 'sala-de-eventos',
+    title: 'SALA DE EVENTOS',
+    description:
+      'Um palco exclusivo para jam sessions e aulas de combo, proporcionando uma experiência real de performance ao vivo — essencial para quem quer desenvolver a sua musicalidade em grupo. Este espaço único é também utilizado para concertos, apresentações dos alunos e eventos especiais da academia.',
+    image: 'https://images.unsplash.com/photo-1540039155733-5bb30b99f9f4?w=1200&q=80&fit=crop',
+    imageAlt: 'Sala de eventos com palco e iluminação profissional para concertos e jam sessions',
+    features: ['Palco profissional', 'Sistema de PA', 'Iluminação de palco', 'Capacidade para 80 pessoas'],
+  },
+];
+---
+
+<BaseLayout
+  title="Instalações | Academia de Guitarra do Porto"
+  description="Conheça as instalações modernas da Academia de Guitarra do Porto — 8 salas de aula, estúdio de gravação profissional e sala de eventos para jam sessions."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[70vh] min-h-[500px] flex items-center justify-center overflow-hidden" aria-label="Cabeçalho Instalações">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1920&q=80&fit=crop"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/75"></div>
+    </div>
+
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">ESPAÇOS</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none fade-in-up">
+        INSTALAÇÕES
+      </h1>
+    </div>
+  </section>
+
+  <!-- ════════════ INTRO ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="instalacoes-intro">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl">
+
+      <div class="text-center mb-12">
+        <SectionDivider />
+        <span class="section-label">As Nossas Instalações</span>
+        <h2 id="instalacoes-intro" class="section-title fade-in-up">O ESPAÇO CERTO<br class="hidden md:block" /> PARA APRENDER</h2>
+        <SectionDivider />
+      </div>
+
+      <p class="text-agp-muted leading-loose text-lg text-center max-w-3xl mx-auto fade-in-up">
+        Na nossa academia, acreditamos que o ambiente certo faz toda a diferença no processo de aprendizagem
+        musical. É por isso que investimos em instalações modernas, confortáveis e totalmente preparadas
+        para acolher músicos de todos os níveis.
+      </p>
+
+      <!-- Feature pills -->
+      <div class="flex flex-wrap justify-center gap-3 mt-10 fade-in-up">
+        {['8 Salas de Aula', 'Estúdio Profissional', 'Palco Exclusivo', 'Acústica Tratada', 'Equipamento de Topo'].map((f) => (
+          <span class="border border-agp-red/50 text-agp-red font-heading tracking-widest text-xs uppercase px-4 py-2">
+            {f}
+          </span>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ ACCORDION SECTIONS ════════════ -->
+  <section class="py-12 bg-[#080808]" aria-label="Secções das instalações">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div id="instalacoes-accordion" class="flex flex-col gap-2">
+        {instalacoes.map((item, i) => (
+          <div
+            class={`v-accordion-item border border-white/10 overflow-hidden ${i === 0 ? 'open' : ''}`}
+            id={item.id}
+          >
+            <!-- Trigger -->
+            <button
+              class="v-accordion-trigger w-full flex items-center justify-between p-6 md:p-8 text-left hover:bg-white/3 transition-colors duration-200 group"
+              aria-expanded={i === 0 ? 'true' : 'false'}
+              aria-controls={`content-${item.id}`}
+              type="button"
+            >
+              <div class="flex items-center gap-4">
+                <span class="font-heading text-agp-red text-lg tracking-widest w-8 shrink-0">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 class="font-heading text-2xl md:text-3xl text-white tracking-widest group-hover:text-agp-red transition-colors duration-200">
+                  {item.title}
+                </h3>
+              </div>
+              <svg
+                class="w-6 h-6 text-agp-muted shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14m7-7H5"/>
+              </svg>
+            </button>
+
+            <!-- Content -->
+            <div class="v-accordion-content" id={`content-${item.id}`} role="region" aria-label={item.title}>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <!-- Image -->
+                <div class="aspect-video md:aspect-auto overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <!-- Text -->
+                <div class="p-8 md:p-12 flex flex-col justify-center">
+                  <p class="text-agp-muted leading-relaxed text-base mb-8">{item.description}</p>
+                  <ul class="flex flex-col gap-3" role="list">
+                    {item.features.map((f) => (
+                      <li class="flex items-center gap-3 text-sm">
+                        <span class="text-agp-red shrink-0" aria-hidden="true">●</span>
+                        <span class="text-agp-muted">{f}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT FORM ════════════ -->
+  <ContactForm />
+
+</BaseLayout>
+
+<script>
+  const accordionItems = document.querySelectorAll<HTMLElement>('.v-accordion-item');
+
+  accordionItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.v-accordion-trigger');
+
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      accordionItems.forEach((i) => {
+        i.classList.remove('open');
+        i.querySelector('.v-accordion-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+
+      // Open clicked (if it wasn't open)
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
