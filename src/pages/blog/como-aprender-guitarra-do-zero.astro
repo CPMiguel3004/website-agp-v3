@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionDivider from '../../components/SectionDivider.astro';
+import ContactForm from '../../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Como Aprender Guitarra do Zero — Guia Completo | Academia de Guitarra do Porto"
+  description="Nunca tocaste guitarra? Guia completo para iniciantes: por onde começar, o que esperar nos primeiros meses e como evitar os erros mais comuns."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img src="/fotos/guitarra-acustica.png" alt="" class="w-full h-full object-cover object-center" loading="eager" fetchpriority="high" decoding="async" />
+      <div class="absolute inset-0 bg-agp-bg/80"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 pt-24 max-w-4xl mx-auto">
+      <span class="section-label text-center block">Iniciantes · 5 min de leitura</span>
+      <h1 class="font-heading text-4xl md:text-6xl text-white uppercase leading-tight fade-in-up mt-4">
+        Como Aprender Guitarra do Zero — Guia Completo para Iniciantes
+      </h1>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTENT ════════════ -->
+  <article class="py-24 bg-agp-bg">
+    <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+      <SectionDivider />
+
+      <div class="space-y-8 font-body text-agp-muted leading-loose text-lg">
+
+        <p>Aprender guitarra é uma das decisões mais satisfatórias que podes tomar. Mas para muitos iniciantes, o maior obstáculo não é a dificuldade — é não saber por onde começar. Este guia responde exatamente a isso.</p>
+
+        <h2 class="font-heading text-3xl text-white tracking-widest mt-12">1. ELÉTRICA OU ACÚSTICA?</h2>
+        <p>A resposta curta: <strong class="text-white">começa com o que te motiva ouvir</strong>. Se ouves rock, blues ou metal — elétrica. Se preferes fingerpicking, folk ou clássico — acústica. O instrumento certo é aquele que te faz querer pegar nele todos os dias.</p>
+        <p>Muita gente aconselha "começa na acústica porque é mais difícil". Discordamos. Um instrumento desconfortável cria resistência à prática. Começa naquilo que te inspira.</p>
+
+        <h2 class="font-heading text-3xl text-white tracking-widest mt-12">2. O QUE ESPERAR NOS PRIMEIROS MESES</h2>
+        <p><strong class="text-white">Mês 1:</strong> Primeiros acordes abertos (Lá, Ré, Mi, Sol). Os dedos vão doer — é normal. A pele endurece em 2-3 semanas. Já podes tocar partes de músicas reais.</p>
+        <p><strong class="text-white">Mês 2-3:</strong> Transições entre acordes mais fluidas. Primeiras músicas completas. Começas a perceber a lógica do braço da guitarra.</p>
+        <p><strong class="text-white">Mês 4-6:</strong> Primeiras escalas, bends, vibrato. A evolução neste período é exponencial se praticares consistentemente.</p>
+
+        <h2 class="font-heading text-3xl text-white tracking-widest mt-12">3. OS ERROS MAIS COMUNS</h2>
+        <ul class="space-y-4 list-none">
+          <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span><span><strong class="text-white">Praticar sem consistência.</strong> 15 minutos por dia supera 2 horas ao fim de semana. A consistência é tudo.</span></li>
+          <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span><span><strong class="text-white">Tentar aprender tudo online.</strong> Vídeos são um excelente complemento, mas um professor identifica e corrige maus hábitos posturais e técnicos antes que se instalem.</span></li>
+          <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span><span><strong class="text-white">Evitar tocar com outros.</strong> Tocar em conjunto acelera a evolução de forma que a prática solo não consegue replicar.</span></li>
+          <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span><span><strong class="text-white">Esperar estar "pronto" para tocar ao vivo.</strong> Não existe pronto. Toca o mais cedo possível.</span></li>
+        </ul>
+
+        <h2 class="font-heading text-3xl text-white tracking-widest mt-12">4. QUANTO TEMPO DE PRÁTICA POR DIA?</h2>
+        <p>Para um iniciante, <strong class="text-white">20 a 30 minutos por dia</strong> é suficiente e sustentável. O mais importante é a regularidade. Não adianta estudar 3 horas num dia e parar durante uma semana.</p>
+        <p>À medida que evoluíres, aumenta naturalmente para 45-60 minutos. Nessa altura já não será esforço — será prazer.</p>
+
+        <h2 class="font-heading text-3xl text-white tracking-widest mt-12">5. VALE A PENA TER UM PROFESSOR?</h2>
+        <p>Sim — especialmente no início. Um professor encurta drasticamente a curva de aprendizagem, evita que develops maus hábitos técnicos difíceis de corrigir mais tarde, e mantém-te motivado com um plano estruturado.</p>
+        <p>Na Academia de Guitarra do Porto, o nosso método adapta-se completamente ao teu nível e objetivos. Do zero à tua primeira música em menos de 1 mês.</p>
+
+      </div>
+
+      <SectionDivider />
+
+      <div class="text-center mt-8">
+        <p class="text-agp-muted mb-6">Pronto para começar? Experimenta a academia sem compromisso.</p>
+        <a href="/precos" class="btn-primary-lg">VER PLANOS E PREÇOS</a>
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-white/10">
+        <a href="/blog" class="text-agp-red font-heading text-sm tracking-widest hover:underline uppercase">← Voltar ao Blog</a>
+      </div>
+    </div>
+  </article>
+
+  <ContactForm />
+</BaseLayout>

@@ -1,0 +1,109 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+---
+
+<BaseLayout
+  title="Política de Privacidade | Academia de Guitarra do Porto"
+  description="Política de Privacidade da Academia de Guitarra do Porto. Saiba como tratamos os seus dados pessoais em conformidade com o RGPD."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[40vh] min-h-[300px] flex items-center justify-center overflow-hidden" aria-label="Política de Privacidade">
+    <div class="absolute inset-0 bg-[#080808]"></div>
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">Legal</span>
+      <h1 class="font-heading text-5xl md:text-7xl text-white uppercase leading-none fade-in-up">
+        POLÍTICA DE PRIVACIDADE
+      </h1>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTENT ════════════ -->
+  <section class="py-24 bg-agp-bg">
+    <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+
+      <SectionDivider />
+
+      <div class="prose prose-invert max-w-none font-body text-agp-muted leading-loose space-y-10">
+
+        <div>
+          <p class="text-white/50 text-sm tracking-widest uppercase font-heading mb-8">Última atualização: abril de 2025</p>
+          <p>
+            A <strong class="text-white">Academia de Guitarra do Porto</strong>, com sede na Rua Afonso Lopes Vieira 186, 4100-020 Porto, e contactável através de <a href="mailto:info@academiaguitarraporto.pt" class="text-agp-red hover:underline">info@academiaguitarraporto.pt</a>, é responsável pelo tratamento dos dados pessoais recolhidos através deste website, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD — Regulamento UE 2016/679).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">1. DADOS RECOLHIDOS</h2>
+          <p>Através do formulário de contacto, recolhemos os seguintes dados pessoais:</p>
+          <ul class="list-none space-y-2 mt-4">
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Nome completo</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Endereço de email</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Número de telemóvel</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Assunto e mensagem submetidos</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">2. FINALIDADE E BASE LEGAL</h2>
+          <p>Os dados recolhidos são utilizados exclusivamente para:</p>
+          <ul class="list-none space-y-2 mt-4">
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Responder a pedidos de informação, inscrições e contactos enviados através do formulário</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> Gestão da relação com alunos e potenciais alunos</li>
+          </ul>
+          <p class="mt-4">A base legal para este tratamento é o <strong class="text-white">consentimento explícito</strong> do titular dos dados (art. 6.º, n.º 1, al. a) do RGPD), prestado no momento do envio do formulário.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">3. CONSERVAÇÃO DOS DADOS</h2>
+          <p>Os dados pessoais são conservados apenas pelo tempo necessário para responder ao pedido e, quando aplicável, para cumprimento de obrigações legais. Dados de contacto de alunos inscritos são mantidos durante a vigência da relação contratual e pelo período legalmente exigido após o seu término.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">4. PARTILHA DE DADOS</h2>
+          <p>Os seus dados pessoais <strong class="text-white">não são vendidos, alugados ou partilhados</strong> com terceiros para fins comerciais. Podem ser partilhados apenas com prestadores de serviços técnicos estritamente necessários ao funcionamento do website (ex: serviços de alojamento e envio de email), que atuam como subcontratantes e estão vinculados a obrigações de confidencialidade.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">5. DIREITOS DO TITULAR</h2>
+          <p>Nos termos do RGPD, tem os seguintes direitos:</p>
+          <ul class="list-none space-y-2 mt-4">
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Acesso</strong> — saber quais os seus dados que tratamos</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Retificação</strong> — corrigir dados incorretos ou incompletos</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Apagamento</strong> — solicitar a eliminação dos seus dados</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Oposição</strong> — opor-se ao tratamento dos seus dados</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Portabilidade</strong> — receber os seus dados num formato estruturado</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Retirar o consentimento</strong> a qualquer momento, sem prejuízo da licitude do tratamento anterior</li>
+          </ul>
+          <p class="mt-4">Para exercer qualquer um destes direitos, contacte-nos através de <a href="mailto:info@academiaguitarraporto.pt" class="text-agp-red hover:underline">info@academiaguitarraporto.pt</a>. Tem ainda o direito de apresentar reclamação à <strong class="text-white">Comissão Nacional de Proteção de Dados (CNPD)</strong> em <a href="https://www.cnpd.pt" target="_blank" rel="noopener noreferrer" class="text-agp-red hover:underline">www.cnpd.pt</a>.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">6. SEGURANÇA</h2>
+          <p>Adotamos medidas técnicas e organizativas adequadas para proteger os seus dados pessoais contra acesso não autorizado, perda ou destruição acidental.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">7. ALTERAÇÕES A ESTA POLÍTICA</h2>
+          <p>Reservamo-nos o direito de atualizar esta Política de Privacidade. Quaisquer alterações serão publicadas nesta página com indicação da data de atualização.</p>
+        </div>
+
+        <div>
+          <h2 class="font-heading text-2xl text-white tracking-widest mb-4">8. CONTACTO</h2>
+          <p>Para qualquer questão relativa à proteção dos seus dados pessoais:</p>
+          <ul class="list-none space-y-2 mt-4">
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Email:</strong> <a href="mailto:info@academiaguitarraporto.pt" class="text-agp-red hover:underline">info@academiaguitarraporto.pt</a></li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Telefone:</strong> +351 919 127 019</li>
+            <li class="flex items-start gap-3"><span class="text-agp-red shrink-0 mt-1">●</span> <strong class="text-white">Morada:</strong> Rua Afonso Lopes Vieira 186, 4100-020 Porto</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <SectionDivider />
+
+    </div>
+  </section>
+
+</BaseLayout>

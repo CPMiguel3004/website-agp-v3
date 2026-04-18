@@ -9,7 +9,7 @@ const instalacoes = [
     title: 'SALAS DE AULA',
     description:
       'As nossas 8 salas de aula são totalmente equipadas, com acústica tratada e preparadas para o ensino individual e em grupo. Cada sala dispõe de instrumentos de alta qualidade, amplificadores, cadeiras ergonómicas e luz natural, criando o ambiente ideal para o aprendizado musical.',
-    image: '/fotos/homepage/5.png',
+    image: '/fotos/sala-aula.jpg',
     imageAlt: 'Sala de aula com instrumentos musicais e equipamento de ensino na Academia de Guitarra do Porto',
     features: ['8 salas equipadas', 'Acústica tratada', 'Instrumentos profissionais', 'Ensino individual e em grupo'],
   },
@@ -18,7 +18,7 @@ const instalacoes = [
     title: 'ESTÚDIO DE GRAVAÇÃO',
     description:
       'O nosso estúdio de gravação profissional conta com régie e sala de captação separada, onde os nossos alunos podem gravar os seus projetos com qualidade de estúdio. Equipado com os melhores microfones, pré-amplificadores e software de produção musical, o estúdio é um espaço único para transformar ideias em música.',
-    image: '/fotos/homepage/4.png',
+    image: '/fotos/estudio-gravacao.png',
     imageAlt: 'Estúdio de gravação profissional com consola de mistura e equipamento de alta qualidade',
     features: ['Régie profissional', 'Sala de captação separada', 'Microfones de alta qualidade', 'Software de produção'],
   },
@@ -26,10 +26,10 @@ const instalacoes = [
     id: 'sala-de-eventos',
     title: 'SALA DE EVENTOS',
     description:
-      'Um palco exclusivo para jam sessions e aulas de combo, proporcionando uma experiência real de performance ao vivo — essencial para quem quer desenvolver a sua musicalidade em grupo. Este espaço único é também utilizado para concertos, apresentações dos alunos e eventos especiais da academia.',
+      'Um palco exclusivo para jam sessions e aulas de combo, proporcionando uma experiência real de performance ao vivo, sendo essencial para quem quer desenvolver a sua musicalidade. Este espaço único é também utilizado para concertos, apresentações dos alunos e eventos especiais da academia.',
     image: '/fotos/sala-jams.png',
     imageAlt: 'Sala de eventos com palco e iluminação profissional para concertos e jam sessions',
-    features: ['Palco profissional', 'Sistema de PA', 'Iluminação de palco', 'Capacidade para 80 pessoas'],
+    features: ['Palco profissional', 'Sistema de PA', 'Iluminação de palco', 'Capacidade para 70 pessoas'],
   },
 ];
 ---
@@ -80,7 +80,7 @@ const instalacoes = [
 
       <!-- Feature pills -->
       <div class="flex flex-wrap justify-center gap-3 mt-10 fade-in-up">
-        {['8 Salas de Aula', 'Estúdio Profissional', 'Palco Exclusivo', 'Acústica Tratada', 'Equipamento de Topo'].map((f) => (
+        {['8 Salas de Aula', 'Estúdio Profissional', 'Palco Exclusivo'].map((f) => (
           <span class="border border-agp-red/50 text-agp-red font-heading tracking-widest text-xs uppercase px-4 py-2">
             {f}
           </span>
@@ -108,9 +108,6 @@ const instalacoes = [
               type="button"
             >
               <div class="flex items-center gap-4">
-                <span class="font-heading text-agp-red text-lg tracking-widest w-8 shrink-0">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
                 <h3 class="font-heading text-2xl md:text-3xl text-white tracking-widest group-hover:text-agp-red transition-colors duration-200">
                   {item.title}
                 </h3>

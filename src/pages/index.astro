@@ -3,87 +3,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionDivider from '../components/SectionDivider.astro';
 import ContactForm from '../components/ContactForm.astro';
 
-const presencialPlans = [
-  {
-    name: 'Básico',
-    price: '112€',
-    period: '/Mês',
-    popular: false,
-    features: [
-      '4 aulas de 1h/mês',
-      'Horário fixo',
-      'Aulas individuais',
-      'Concertos & Jam Sessions',
-      'Comunidade',
-    ],
-  },
-  {
-    name: 'Músico',
-    price: '140€',
-    period: '/Mês',
-    popular: true,
-    features: [
-      '8 aulas de 1h/mês',
-      'Horário fixo',
-      'Aulas individuais + Cadeira Complementar',
-      'Concertos & Jam Sessions',
-      'Comunidade',
-    ],
-  },
-  {
-    name: 'Pack',
-    price: '130€',
-    period: '/4 Aulas',
-    popular: false,
-    features: [
-      'Aula individual',
-      'Agenda quando quiseres',
-      'Concertos & Jam Sessions',
-      'Comunidade',
-    ],
-  },
-];
-
-const onlinePlans = [
-  {
-    name: 'Básico',
-    price: '115€',
-    period: '/Mês',
-    popular: false,
-    features: [
-      '4 aulas online de 1h/mês',
-      'Horário flexível',
-      'Aulas gravadas + materiais digitais',
-      'Workshops online exclusivos',
-    ],
-  },
-  {
-    name: 'Músico',
-    price: '140€',
-    period: '/Mês',
-    popular: false,
-    features: [
-      '8 aulas online de 1h/mês',
-      'Horário flexível',
-      'Aulas individuais + Cadeira Complementar',
-      'Aulas gravadas',
-      'Workshops online',
-    ],
-  },
-  {
-    name: 'Pack',
-    price: '145€',
-    period: '/4 Aulas',
-    popular: false,
-    features: [
-      'Flexibilidade total',
-      'Aulas gravadas',
-      'Ideal para experimentar sem compromisso',
-    ],
-  },
-];
-
 const students = [
+  {
+    name: 'Francisca Borges',
+    image: '/fotos/francisca-borges.png',
+    quote: '"Os professores adaptaram-se completamente ao meu ritmo."',
+  },
   {
     name: 'João Campello',
     image: '/fotos/joao-campello.png',
@@ -93,11 +18,6 @@ const students = [
     name: 'Manuel Dinis',
     image: '/fotos/manuel-dinis.png',
     quote: '"Subi ao palco pela primeira vez e foi inesquecível."',
-  },
-  {
-    name: 'Francisca Borges',
-    image: '/fotos/francisca-borges.png',
-    quote: '"Os professores adaptaram-se completamente ao meu ritmo."',
   },
   {
     name: 'Miguel Dinis',
@@ -137,9 +57,9 @@ const sinergiaFeatures = [
   title="Academia de Guitarra do Porto | Aprende Música em Porto"
   description="A Academia de Guitarra do Porto, powered by Bunker Records, oferece formação musical de qualidade em Porto. Do zero à tua primeira música em apenas 1 mês. Inscreve-te já!"
 >
-  <!-- ════════════ HERO ════════════ -->
+
+  <!-- ════════════ 1. HERO ════════════ -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Secção principal">
-    <!-- Background image -->
     <div class="absolute inset-0 z-0" aria-hidden="true">
       <img
         src="/fotos/homepage/1.png"
@@ -153,10 +73,8 @@ const sinergiaFeatures = [
       <div class="absolute inset-0 bg-agp-bg/40"></div>
     </div>
 
-    <!-- Red glow accent -->
     <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-96 h-64 bg-agp-red/10 blur-[80px] rounded-full pointer-events-none" aria-hidden="true"></div>
 
-    <!-- Content -->
     <div class="relative z-10 container mx-auto px-4 md:px-8 text-center pt-32 pb-24">
       <p class="section-label text-center mb-4 fade-in-up">Porto, Portugal</p>
 
@@ -176,13 +94,22 @@ const sinergiaFeatures = [
       </p>
 
       <div class="fade-in-up [animation-delay:0.4s]">
-        <a href="/contactos" class="btn-primary-lg" aria-label="Começa a aprender guitarra agora">
+        <a href="#contacto" class="btn-primary-lg" aria-label="Começa a aprender guitarra agora">
           COMEÇA AGORA!
         </a>
+        <div class="flex items-center justify-center gap-2 mt-5">
+          <div class="flex items-center gap-0.5">
+            {[1,2,3,4,5].map(() => (
+              <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+              </svg>
+            ))}
+          </div>
+          <span class="text-white/70 text-sm font-body">4.9 · <span class="text-white">50+ reviews</span> no Google</span>
+        </div>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce" aria-hidden="true">
       <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
@@ -190,7 +117,7 @@ const sinergiaFeatures = [
     </div>
   </section>
 
-  <!-- ════════════ O QUE NOS DIFERENCIA ════════════ -->
+  <!-- ════════════ 2. O QUE NOS DIFERENCIA ════════════ -->
   <section class="py-24 bg-agp-bg" aria-labelledby="diferencia-title">
     <div class="container mx-auto px-4 md:px-8 lg:px-12">
 
@@ -204,27 +131,15 @@ const sinergiaFeatures = [
         </p>
       </div>
 
-      <!-- 3 Feature cards -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
 
-        <!-- Card 1 -->
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Metodologia Própria">
           <div class="aspect-[4/5] overflow-hidden">
-            <img
-              src="/fotos/metodologia-propria.jpg"
-              alt="Professor ensinando guitarra a um aluno numa sala de aula"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              decoding="async"
-              width="800"
-              height="1000"
-            />
+            <img src="/fotos/metodologia-propria.jpg" alt="Professor ensinando guitarra a um aluno numa sala de aula" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" width="800" height="1000" />
           </div>
-          <!-- Default label -->
           <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
             <h3 class="font-heading text-2xl text-white tracking-widest">METODOLOGIA PRÓPRIA</h3>
           </div>
-          <!-- Hover overlay -->
           <div class="absolute inset-0 bg-agp-bg/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
             <h3 class="font-heading text-3xl text-white tracking-widest mb-4">METODOLOGIA PRÓPRIA</h3>
             <div class="double-divider w-16 mx-auto mb-4"><span></span><span></span></div>
@@ -232,18 +147,9 @@ const sinergiaFeatures = [
           </div>
         </article>
 
-        <!-- Card 2 -->
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Performance Constante">
           <div class="aspect-[4/5] overflow-hidden">
-            <img
-              src="/fotos/performance-constante.png"
-              alt="Músico a tocar no palco com luzes de concerto"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              decoding="async"
-              width="800"
-              height="1000"
-            />
+            <img src="/fotos/performance-constante.png" alt="Músico a tocar no palco com luzes de concerto" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" width="800" height="1000" />
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
             <h3 class="font-heading text-2xl text-white tracking-widest">PERFORMANCE CONSTANTE</h3>
@@ -255,18 +161,9 @@ const sinergiaFeatures = [
           </div>
         </article>
 
-        <!-- Card 3 -->
         <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label="Parcerias Dinamizadoras">
           <div class="aspect-[4/5] overflow-hidden">
-            <img
-              src="/fotos/parcerias-dinamizadoras.jpg"
-              alt="Músicos em colaboração num concerto ao vivo"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              loading="lazy"
-              decoding="async"
-              width="800"
-              height="1000"
-            />
+            <img src="/fotos/parcerias-dinamizadoras.jpg" alt="Músicos em colaboração num concerto ao vivo" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" width="800" height="1000" />
           </div>
           <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
             <h3 class="font-heading text-2xl text-white tracking-widest">PARCERIAS DINAMIZADORAS</h3>
@@ -282,93 +179,7 @@ const sinergiaFeatures = [
     </div>
   </section>
 
-  <!-- ════════════ PRICING ════════════ -->
-  <section class="py-24 bg-[#080808]" aria-labelledby="pricing-title">
-    <div class="container mx-auto px-4 md:px-8 lg:px-12">
-
-      <div class="text-center mb-16">
-        <SectionDivider />
-        <span class="section-label">Cursos</span>
-        <h2 id="pricing-title" class="section-title fade-in-up">OS NOSSOS PLANOS</h2>
-        <SectionDivider />
-      </div>
-
-      <div class="max-w-4xl mx-auto fade-in pt-6">
-        <table class="w-full border-collapse" role="table" aria-label="Comparação de planos">
-          <thead>
-            <tr>
-              <th class="w-[30%] pb-6" scope="col"></th>
-
-              <!-- Básico -->
-              <th class="w-[23%] text-center border border-white/10 border-r-agp-red bg-white/3 px-4 pt-8 pb-6" scope="col">
-                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
-                <span class="font-heading text-2xl text-white tracking-widest block">BÁSICO</span>
-                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
-                <span class="font-heading text-4xl text-agp-red block">112€</span>
-                <span class="text-agp-muted text-xs tracking-widest">/MÊS</span>
-              </th>
-
-              <!-- Músico (popular) -->
-              <th class="w-[23%] text-center border border-agp-red bg-agp-red/10 px-4 pb-6 relative" scope="col">
-                <div class="bg-agp-red py-2 px-4 -mx-px -mt-px mb-5 flex items-center justify-center gap-2">
-                  <span class="text-yellow-400 text-xs">★</span>
-                  <span class="font-heading text-white text-xs tracking-[0.2em]">MAIS POPULAR</span>
-                </div>
-                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
-                <span class="font-heading text-2xl text-white tracking-widest block">MÚSICO</span>
-                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
-                <span class="font-heading text-4xl text-agp-red block">140€</span>
-                <span class="text-agp-muted text-xs tracking-widest">/MÊS</span>
-              </th>
-
-              <!-- Pack -->
-              <th class="w-[23%] text-center border border-white/10 bg-white/3 px-4 pt-8 pb-6" scope="col">
-                <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase block mb-3">Plano</span>
-                <span class="font-heading text-2xl text-white tracking-widest block">PACK</span>
-                <div class="double-divider w-8 mx-auto my-3"><span></span><span></span></div>
-                <span class="font-heading text-4xl text-agp-red block">130€</span>
-                <span class="text-agp-muted text-xs tracking-widest">/4 AULAS</span>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {[
-              { label: 'Modalidade',               basico: 'Presencial & Online', musico: 'Presencial & Online', pack: 'Presencial & Online' },
-              { label: 'Aulas por mês',            basico: '4 aulas de 1h',       musico: '8 aulas de 1h',       pack: 'À vontade' },
-              { label: 'Aulas individuais/mês',    basico: '4',                   musico: '4',                   pack: 'À vontade' },
-              { label: 'Aulas em turma/mês',       basico: '—',                   musico: '4',                   pack: '—' },
-              { label: 'Horário',                  basico: 'Fixo',                musico: 'Fixo',                pack: 'Flexível' },
-              { label: 'Cadeira Complementar',      basico: '—',                   musico: '✓',                   pack: '—' },
-              { label: 'Concertos & Jam Sessions',  basico: '✓',                   musico: '✓',                   pack: '✓' },
-              { label: 'Comunidade',                basico: '✓',                   musico: '✓',                   pack: '✓' },
-            ].map((row, i) => (
-              <tr class={`border-b border-white/10 transition-colors duration-150 hover:bg-white/3 ${i % 2 === 0 ? 'bg-white/[0.02]' : ''}`}>
-                <td class="py-4 px-2 text-agp-muted text-sm font-body tracking-wide">{row.label}</td>
-                <td class={`py-4 px-4 text-center text-sm border-x border-white/10 border-r-agp-red ${row.basico === '✓' ? 'text-agp-red font-heading text-xl' : row.basico === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.basico}</td>
-                <td class={`py-4 px-4 text-center text-sm border border-agp-red bg-agp-red/5 ${row.musico === '✓' ? 'text-agp-red font-heading text-xl' : row.musico === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.musico}</td>
-                <td class={`py-4 px-4 text-center text-sm border-x border-white/10 ${row.pack === '✓' ? 'text-agp-red font-heading text-xl' : row.pack === '—' ? 'text-white/15 font-heading text-xl' : 'text-white font-body'}`}>{row.pack}</td>
-              </tr>
-            ))}
-            <!-- CTA row -->
-            <tr>
-              <td class="pt-8 pb-2"></td>
-              <td class="pt-8 pb-2 border-x border-white/10 border-r-agp-red text-center">
-                <a href="/contactos" class="inline-block border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
-              </td>
-              <td class="pt-8 pb-2 border border-agp-red bg-agp-red/5 text-center">
-                <a href="/contactos" class="inline-block bg-agp-red text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:bg-agp-red-hover transition-colors duration-300">ESCOLHER</a>
-              </td>
-              <td class="pt-8 pb-2 border-x border-white/10 text-center">
-                <a href="/contactos" class="inline-block border border-white/30 text-white font-heading tracking-widest uppercase py-3 px-6 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ════════════ DE ALUNOS A MÚSICOS ════════════ -->
+  <!-- ════════════ 3. DE ALUNOS A MÚSICOS ════════════ -->
   <section class="py-24 bg-[#080808] overflow-hidden" aria-labelledby="students-title">
     <div class="container mx-auto px-4 md:px-8 lg:px-12">
 
@@ -382,13 +193,7 @@ const sinergiaFeatures = [
         </p>
       </div>
 
-      <!-- Horizontal Accordion -->
-      <div
-        class="h-accordion fade-in"
-        id="student-accordion"
-        role="list"
-        aria-label="Histórias de alunos"
-      >
+      <div class="h-accordion fade-in" id="student-accordion" role="list" aria-label="Histórias de alunos">
         {students.map((student, i) => (
           <div
             class={`h-accordion-item ${i === 0 ? 'active' : ''}`}
@@ -404,14 +209,10 @@ const sinergiaFeatures = [
               loading="lazy"
               decoding="async"
             />
-
-            <!-- Detail (shown when active) -->
             <div class="item-detail">
               <p class="font-body text-agp-muted text-sm italic mb-3">{student.quote}</p>
               <h3 class="font-heading text-2xl text-white">{student.name}</h3>
             </div>
-
-            <!-- Collapsed label -->
             <div class="item-label" aria-hidden="true">
               <span class="font-heading text-white text-sm tracking-widest">{student.name}</span>
             </div>
@@ -422,57 +223,16 @@ const sinergiaFeatures = [
     </div>
   </section>
 
-  <!-- ════════════ SINERGIA BUNKER ════════════ -->
-  <section class="py-24 bg-agp-bg relative overflow-hidden" aria-labelledby="sinergia-title">
-    <!-- Red glow -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-agp-red/5 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
-
-    <div class="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
-
-      <div class="text-center mb-16">
-        <SectionDivider />
-        <span class="section-label">Ecossistema</span>
-        <h2 id="sinergia-title" class="section-title fade-in-up">SINERGIA BUNKER</h2>
-        <SectionDivider />
-        <p class="section-subtitle mt-6 max-w-3xl mx-auto fade-in-up">
-          APOSTAMOS NUMA METODOLOGIA PRÓPRIA, PERFORMANCES CONSTANTES E PARCERIAS DINAMIZADORAS.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 stagger-children">
-        {sinergiaFeatures.map((feature) => (
-          <article class="fade-in-up group">
-            <div class="aspect-[9/16] overflow-hidden mb-6">
-              <img
-                src={feature.image}
-                alt={feature.title}
-                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <h3 class="font-heading text-xl text-white tracking-widest mb-4">{feature.title}</h3>
-            <div class="double-divider w-12 mb-4"><span></span><span></span></div>
-            <p class="text-agp-muted leading-relaxed text-sm">{feature.description}</p>
-          </article>
-        ))}
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ════════════ GOOGLE REVIEWS ════════════ -->
-  <section class="py-24 bg-[#080808]" aria-labelledby="reviews-title">
+  <!-- ════════════ 4. GOOGLE REVIEWS ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="reviews-title">
     <div class="container mx-auto px-4 md:px-8 lg:px-12">
 
-      <!-- Header -->
       <div class="text-center mb-16">
         <SectionDivider />
         <span class="section-label">Google Reviews</span>
         <h2 id="reviews-title" class="section-title fade-in-up">O QUE DIZEM<br class="hidden md:block" /> OS NOSSOS ALUNOS</h2>
         <SectionDivider />
 
-        <!-- Rating summary -->
         <div class="flex items-center justify-center gap-4 mt-8 fade-in-up">
           <span class="font-heading text-6xl text-white">4.9</span>
           <div class="flex flex-col items-start gap-1">
@@ -488,7 +248,6 @@ const sinergiaFeatures = [
         </div>
       </div>
 
-      <!-- Review cards -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
 
         <article class="card-dark p-6 flex flex-col gap-4 fade-in-up">
@@ -565,7 +324,6 @@ const sinergiaFeatures = [
 
       </div>
 
-      <!-- CTA full-width -->
       <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6 fade-in-up">
         <div class="flex items-center gap-3">
           <div class="flex items-center gap-0.5">
@@ -591,16 +349,180 @@ const sinergiaFeatures = [
     </div>
   </section>
 
-  <!-- ════════════ CTA BANNER ════════════ -->
+  <!-- ════════════ 5. OS NOSSOS PLANOS ════════════ -->
+  <section class="pt-24 pb-12 bg-[#080808]" aria-labelledby="pricing-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Cursos</span>
+        <h2 id="pricing-title" class="section-title fade-in-up">OS NOSSOS PLANOS</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 fade-in-up">PRESENCIAL OU ONLINE — O MESMO PREÇO, A MESMA QUALIDADE.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto fade-in-up items-stretch">
+
+        <!-- BÁSICO -->
+        <div class="flex flex-col border border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+          <h3 class="font-heading text-4xl text-white tracking-widest mb-6">BÁSICO</h3>
+          <div class="mb-6">
+            <span class="font-heading text-6xl text-agp-red leading-none">112</span>
+            <span class="font-heading text-2xl text-agp-red">€</span>
+            <span class="text-agp-muted text-sm tracking-widest block mt-1">/MÊS</span>
+          </div>
+          <div class="double-divider w-full mb-6"><span></span><span></span></div>
+          <ul class="flex flex-col gap-4 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">4 aulas individuais</strong> de 1h/mês</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário fixo</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+          </ul>
+          <a href="#contacto" class="block text-center border border-white/30 text-white font-heading tracking-widest uppercase py-4 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+        </div>
+
+        <!-- MÚSICO -->
+        <div class="flex flex-col border border-agp-red bg-agp-red/5 relative md:-mt-6 md:-mb-0">
+          <div class="bg-agp-red py-3 px-4 flex items-center justify-center gap-2">
+            <span class="text-yellow-400 text-xs">★</span>
+            <span class="font-heading text-white text-xs tracking-[0.25em]">MAIS POPULAR</span>
+          </div>
+          <div class="p-8 md:p-10 flex flex-col flex-1">
+            <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+            <h3 class="font-heading text-4xl text-white tracking-widest mb-6">MÚSICO</h3>
+            <div class="mb-6">
+              <span class="font-heading text-6xl text-agp-red leading-none">140</span>
+              <span class="font-heading text-2xl text-agp-red">€</span>
+              <span class="text-agp-muted text-sm tracking-widest block mt-1">/MÊS</span>
+            </div>
+            <div class="double-divider w-full mb-6"><span></span><span></span></div>
+            <ul class="flex flex-col gap-4 flex-1 mb-8">
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">8 aulas de 1h/mês</strong> — o dobro!</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">4 individuais</strong> + <strong class="text-white">4 em turma</strong></span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário fixo</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">Cadeira Complementar</strong></span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+            </ul>
+            <a href="#contacto" class="block text-center bg-agp-red text-white font-heading tracking-widest uppercase py-4 text-sm hover:bg-agp-red-hover transition-colors duration-300">ESCOLHER</a>
+          </div>
+        </div>
+
+        <!-- PACK -->
+        <div class="flex flex-col border border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+          <h3 class="font-heading text-4xl text-white tracking-widest mb-6">PACK</h3>
+          <div class="mb-6">
+            <span class="font-heading text-6xl text-agp-red leading-none">130</span>
+            <span class="font-heading text-2xl text-agp-red">€</span>
+            <span class="text-agp-muted text-sm tracking-widest block mt-1">/4 AULAS</span>
+          </div>
+          <div class="double-divider w-full mb-6"><span></span><span></span></div>
+          <ul class="flex flex-col gap-4 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">Aulas à vontade</strong> sem mensalidade</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário <strong class="text-white">flexível</strong></span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+          </ul>
+          <a href="#contacto" class="block text-center border border-white/30 text-white font-heading tracking-widest uppercase py-4 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-8 fade-in-up">
+        <a href="/precos" class="text-agp-red font-heading text-sm tracking-widest hover:underline uppercase">Ver todos os planos e detalhes →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ 6. EXPERIENCE PACK ════════════ -->
+  <section class="py-24 bg-[#080808]" aria-labelledby="experience-title">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
+
+      <span class="section-label">Sem Compromisso</span>
+      <h2 id="experience-title" class="section-title fade-in-up mb-4">
+        EXPERIMENTA ANTES<br class="hidden md:block" /> DE TE INSCREVERES
+      </h2>
+      <div class="double-divider w-32 mx-auto"><span></span><span></span></div>
+      <p class="text-agp-muted text-lg leading-relaxed max-w-2xl mx-auto mt-6 mb-16 fade-in-up">
+        Não tens a certeza se a Academia de Guitarra do Porto é para ti? Experimenta com um <strong class="text-white">Experience Pack</strong> — aulas avulsas sem qualquer compromisso de inscrição, para sentires o método e o ambiente antes de decidires.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-up stagger-children">
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">1 Aula</span>
+          <p class="font-heading text-6xl text-white leading-none">35<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Aula individual de 1h</p>
+        </div>
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">2 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">55<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 15€ vs. avulso</p>
+        </div>
+        <div class="card-dark border-agp-red/40 p-8 flex flex-col items-center gap-4 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-agp-red text-white font-heading text-xs tracking-widest uppercase px-4 py-1">Mais Popular</span>
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">3 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">75<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 30€ vs. avulso</p>
+        </div>
+      </div>
+
+      <div class="mt-12 fade-in-up">
+        <a href="#contacto" class="btn-primary-lg" aria-label="Comprar Experience Pack na Academia de Guitarra do Porto">
+          COMPRAR EXPERIENCE PACK
+        </a>
+        <p class="text-agp-muted text-sm mt-4">Sem inscrição. Sem mensalidade. Só música.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ 7. SINERGIA BUNKER ════════════ -->
+  <section class="py-24 bg-agp-bg relative overflow-hidden" aria-labelledby="sinergia-title">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-agp-red/5 blur-[100px] rounded-full pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Ecossistema</span>
+        <h2 id="sinergia-title" class="section-title fade-in-up">SINERGIA BUNKER</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 max-w-3xl mx-auto fade-in-up">
+          APOSTAMOS NUMA METODOLOGIA PRÓPRIA, PERFORMANCES CONSTANTES E PARCERIAS DINAMIZADORAS.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children">
+        {sinergiaFeatures.map((feature) => (
+          <article class="relative overflow-hidden group cursor-pointer fade-in-up" aria-label={feature.title}>
+            <div class="aspect-[4/5] overflow-hidden">
+              <img src={feature.image} alt={feature.title} class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" decoding="async" />
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-agp-bg/95 via-agp-bg/40 to-transparent transition-opacity duration-400 group-hover:opacity-0" aria-hidden="true">
+              <h3 class="font-heading text-2xl text-white tracking-widest">{feature.title}</h3>
+            </div>
+            <div class="absolute inset-0 bg-agp-bg/85 flex flex-col items-center justify-center p-8 text-center opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+              <h3 class="font-heading text-3xl text-white tracking-widest mb-4">{feature.title}</h3>
+              <div class="double-divider w-16 mx-auto mb-4"><span></span><span></span></div>
+              <p class="text-agp-muted leading-relaxed">{feature.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ 8. CTA BANNER ════════════ -->
   <section class="relative py-24 overflow-hidden" aria-label="Chamada para ação">
     <div class="absolute inset-0 z-0" aria-hidden="true">
-      <img
-        src="/fotos/homepage/1.png"
-        alt=""
-        class="w-full h-full object-cover object-center"
-        loading="lazy"
-        decoding="async"
-      />
+      <img src="/fotos/homepage/1.png" alt="" class="w-full h-full object-cover object-center" loading="lazy" decoding="async" />
       <div class="absolute inset-0 bg-agp-bg/85"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-agp-red/10 to-transparent"></div>
     </div>
@@ -614,68 +536,44 @@ const sinergiaFeatures = [
         Acreditamos que a música transforma vidas, e a tua pode ser a próxima!
       </p>
       <div class="fade-in-up">
-        <a href="/contactos" class="btn-primary-lg" aria-label="Contactar a Academia de Guitarra do Porto">
+        <a href="#contacto" class="btn-primary-lg" aria-label="Contactar a Academia de Guitarra do Porto">
           CONTACTA-NOS!
         </a>
       </div>
     </div>
   </section>
 
-  <!-- ════════════ EXPERIENCE PACK ════════════ -->
-  <section class="py-24 bg-agp-bg" aria-labelledby="experience-title">
-    <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
-
-      <span class="section-label">Sem Compromisso</span>
-      <h2 id="experience-title" class="section-title fade-in-up mb-4">
-        EXPERIMENTA ANTES<br class="hidden md:block" /> DE TE INSCREVERES
-      </h2>
-      <div class="double-divider w-32 mx-auto">
-        <span></span>
-        <span></span>
+  <!-- ════════════ 9. FAQ TEASER ════════════ -->
+  <section class="py-20 bg-[#080808]" aria-label="Perguntas frequentes">
+    <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+      <div class="text-center mb-10">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-title fade-in-up">TENS DÚVIDAS?</h2>
       </div>
-      <p class="text-agp-muted text-lg leading-relaxed max-w-2xl mx-auto mt-6 mb-16 fade-in-up">
-        Não tens a certeza se a Academia de Guitarra do Porto é para ti? Experimenta com um <strong class="text-white">Experience Pack</strong> — aulas avulsas sem qualquer compromisso de inscrição, para sentires o método e o ambiente antes de decidires.
-      </p>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-up stagger-children">
-        <!-- 1 aula -->
-        <div class="card-dark p-8 flex flex-col items-center gap-4">
-          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">1 Aula</span>
-          <p class="font-heading text-6xl text-white leading-none">35<span class="text-agp-red text-3xl">€</span></p>
-          <p class="text-agp-muted text-sm">Aula individual de 1h</p>
-        </div>
-        <!-- 2 aulas -->
-        <div class="card-dark p-8 flex flex-col items-center gap-4">
-          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">2 Aulas</span>
-          <p class="font-heading text-6xl text-white leading-none">55<span class="text-agp-red text-3xl">€</span></p>
-          <p class="text-agp-muted text-sm">Poupa 15€ vs. avulso</p>
-        </div>
-        <!-- 3 aulas -->
-        <div class="card-dark border-agp-red/40 p-8 flex flex-col items-center gap-4 relative">
-          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-agp-red text-white font-heading text-xs tracking-widest uppercase px-4 py-1">Mais Popular</span>
-          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">3 Aulas</span>
-          <p class="font-heading text-6xl text-white leading-none">75<span class="text-agp-red text-3xl">€</span></p>
-          <p class="text-agp-muted text-sm">Poupa 30€ vs. avulso</p>
-        </div>
+      <div class="flex flex-col gap-3 fade-in-up">
+        {[
+          { q: 'Preciso de ter experiência prévia?', a: 'Não. Aceitamos alunos de todos os níveis — do zero absoluto a músicos com anos de prática.' },
+          { q: 'Posso experimentar antes de me inscrever?', a: 'Sim. O Experience Pack permite-te experimentar 1, 2 ou 3 aulas sem qualquer compromisso de inscrição.' },
+          { q: 'As aulas são presenciais ou online?', a: 'Ambas — ao mesmo preço. Podes optar pelo formato que preferires ou combinar os dois.' },
+        ].map((item) => (
+          <div class="border border-white/10 p-6">
+            <p class="font-heading text-white tracking-wide mb-2">{item.q}</p>
+            <p class="text-agp-muted text-sm">{item.a}</p>
+          </div>
+        ))}
       </div>
-
-      <div class="mt-12 fade-in-up">
-        <a href="/contactos" class="btn-primary-lg" aria-label="Comprar Experience Pack na Academia de Guitarra do Porto">
-          COMPRAR EXPERIENCE PACK
-        </a>
-        <p class="text-agp-muted text-sm mt-4">Sem inscrição. Sem mensalidade. Só música.</p>
+      <div class="text-center mt-8 fade-in-up">
+        <a href="/faq" class="text-agp-red font-heading tracking-widest text-sm hover:underline uppercase">Ver todas as perguntas →</a>
       </div>
-
     </div>
   </section>
 
-  <!-- ════════════ CONTACT FORM ════════════ -->
+  <!-- ════════════ 10. CONTACT FORM ════════════ -->
   <ContactForm />
 
 </BaseLayout>
 
 <script>
-  // Horizontal student accordion
   const accordion = document.getElementById('student-accordion');
   if (accordion) {
     const items = accordion.querySelectorAll<HTMLElement>('.h-accordion-item');

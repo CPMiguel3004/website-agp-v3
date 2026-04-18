@@ -9,43 +9,24 @@ const partners = [
     description: 'Festival de blues de referência no Porto, que abre as portas aos nossos alunos para atuações ao vivo e experiências únicas no mundo da música ao vivo.',
     category: 'Festival',
     color: '#c0392b',
+    logo: '/fotos/porto-blues-fest.svg',
   },
   {
     name: 'Rádio Nova',
     description: 'A Rádio Nova dá visibilidade mediática aos projetos dos nossos alunos, difundindo a sua música e ajudando a construir audiências reais.',
     category: 'Media',
     color: '#e67e22',
+    logo: '/fotos/radio-nova.png',
   },
   {
     name: 'Egitana',
     description: 'A Egitana oferece apoio técnico e acesso a equipamento profissional, reforçando a formação dos nossos alunos com ferramentas de topo.',
-    category: 'Tecnologia',
+    category: 'Equipamento',
     color: '#27ae60',
+    logo: '/fotos/egitana.png',
   },
 ];
 
-const benefits = [
-  {
-    icon: '📡',
-    title: 'ALCANCE',
-    desc: 'Os nossos alunos chegam a mais público através das nossas redes de parceiros.',
-  },
-  {
-    icon: '👁️',
-    title: 'VISIBILIDADE',
-    desc: 'Presença nos meios de comunicação e plataformas dos parceiros.',
-  },
-  {
-    icon: '🔗',
-    title: 'NETWORKING',
-    desc: 'Ligações reais com profissionais da indústria musical.',
-  },
-  {
-    icon: '🎯',
-    title: 'OPORTUNIDADES',
-    desc: 'Acesso a palcos, estúdios e projetos que fariam a diferença.',
-  },
-];
 ---
 
 <BaseLayout
@@ -75,24 +56,21 @@ const benefits = [
     </div>
   </section>
 
-  <!-- ════════════ HEADLINE ════════════ -->
-  <section class="py-24 bg-agp-bg" aria-labelledby="partners-headline">
+  <!-- ════════════ INTRO ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="partners-intro">
     <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl text-center">
 
       <SectionDivider />
-      <h2 id="partners-headline" class="section-title fade-in-up mb-4">
-        ALCANCE, VISIBILIDADE,<br class="hidden md:block" />
-        NETWORKING, OPORTUNIDADES<br class="hidden md:block" />
-        E CRESCIMENTO.
-      </h2>
+      <span class="section-label">As Nossas Colaborações</span>
+      <h2 id="partners-intro" class="section-title fade-in-up">OS NOSSOS PARCEIROS</h2>
       <SectionDivider />
 
-      <p class="text-agp-muted leading-loose text-lg mt-8 fade-in-up">
+      <p class="text-agp-muted leading-loose text-lg mt-8 max-w-3xl mx-auto fade-in-up">
         Os nossos parceiros são fundamentais para ampliar as oportunidades dos nossos alunos dentro
         e fora da sala de aula. Através destas colaborações, conseguimos criar experiências reais
         de palco, divulgação musical e integração com o meio artístico e profissional.
       </p>
-      <p class="text-agp-muted leading-loose text-lg mt-4 fade-in-up">
+      <p class="text-agp-muted leading-loose text-lg mt-4 max-w-3xl mx-auto fade-in-up">
         Graças a parcerias como o <strong class="text-white">Porto Blues Fest</strong>, a{' '}
         <strong class="text-white">Rádio Nova</strong> e a{' '}
         <strong class="text-white">Egitana</strong>, os nossos alunos têm acesso a eventos,
@@ -102,40 +80,29 @@ const benefits = [
     </div>
   </section>
 
-  <!-- ════════════ BENEFITS STRIP ════════════ -->
-  <section class="py-16 bg-[#080808]" aria-label="Benefícios das parcerias">
-    <div class="container mx-auto px-4 md:px-8 lg:px-12">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 stagger-children">
-        {benefits.map((b) => (
-          <article class="text-center fade-in-up">
-            <div class="text-3xl mb-4">{b.icon}</div>
-            <h3 class="font-heading text-lg text-white tracking-widest mb-2">{b.title}</h3>
-            <p class="text-agp-muted text-sm leading-relaxed">{b.desc}</p>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ════════════ PARTNER CARDS ════════════ -->
   <section class="py-24 bg-agp-bg" aria-labelledby="partners-grid-title">
     <div class="container mx-auto px-4 md:px-8 lg:px-12">
 
       <div class="text-center mb-16">
         <SectionDivider />
-        <span class="section-label">Os Nossos Parceiros</span>
-        <h2 id="partners-grid-title" class="section-title fade-in-up">OS NOSSOS PARCEIROS</h2>
+        <span class="section-label">Quem nos Apoia</span>
+        <h2 id="partners-grid-title" class="section-title fade-in-up">AS NOSSAS PARCERIAS</h2>
         <SectionDivider />
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto stagger-children">
         {partners.map((partner) => (
           <article class="card-dark p-8 flex flex-col fade-in-up group hover:bg-white/5 transition-all duration-300">
-            <!-- Logo placeholder -->
-            <div class="w-full aspect-[3/1] mb-6 flex items-center justify-center border border-white/10 bg-white/3 group-hover:border-white/20 transition-colors duration-300">
-              <span class="font-heading text-2xl md:text-3xl text-white tracking-widest text-center px-4">
-                {partner.name}
-              </span>
+            <!-- Logo -->
+            <div class="w-full h-40 mb-6 flex items-center justify-center border border-white/10 bg-white/3 group-hover:border-white/20 transition-colors duration-300 p-6">
+              <img
+                src={partner.logo}
+                alt={`Logo ${partner.name}`}
+                class="max-h-full max-w-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
 
             <span class="section-label mb-2">{partner.category}</span>
@@ -150,8 +117,18 @@ const benefits = [
   </section>
 
   <!-- ════════════ CTA ════════════ -->
-  <section class="py-20 bg-agp-red" aria-label="Torna-te parceiro">
-    <div class="container mx-auto px-4 md:px-8 text-center">
+  <section class="relative py-20 overflow-hidden" aria-label="Torna-te parceiro">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="/fotos/guitarra-acustica.png"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/75"></div>
+    </div>
+    <div class="relative z-10 container mx-auto px-4 md:px-8 text-center">
       <h2 class="font-heading text-4xl md:text-6xl text-white mb-4 fade-in-up">
         QUERES SER PARCEIRO?
       </h2>
@@ -160,7 +137,7 @@ const benefits = [
       </p>
       <a
         href="/contactos"
-        class="inline-block bg-white text-agp-red font-heading tracking-widest uppercase px-10 py-4 text-lg hover:bg-agp-bg hover:text-white transition-colors duration-300 fade-in-up"
+        class="block max-w-2xl mx-auto bg-agp-red text-white font-heading tracking-widest uppercase py-4 text-lg hover:bg-agp-red-hover transition-colors duration-300 fade-in-up"
         aria-label="Contactar para ser parceiro da Academia de Guitarra do Porto"
       >
         CONTACTA-NOS

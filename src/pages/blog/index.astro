@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionDivider from '../../components/SectionDivider.astro';
+
+const posts = [
+  {
+    slug: 'como-aprender-guitarra-do-zero',
+    title: 'Como Aprender Guitarra do Zero — Guia Completo para Iniciantes',
+    excerpt: 'Nunca tocaste guitarra? Descobre por onde começar, o que esperar nos primeiros meses e como evitar os erros mais comuns que atrasam a maioria dos iniciantes.',
+    category: 'Iniciantes',
+    date: 'Março 2025',
+    image: '/fotos/guitarra-acustica.png',
+    readTime: '5 min',
+  },
+  {
+    slug: 'guitarra-eletrica-ou-acustica',
+    title: 'Guitarra Elétrica ou Acústica: Qual Escolher para Começar?',
+    excerpt: 'Uma das perguntas mais comuns de quem quer aprender guitarra. A resposta depende dos teus objetivos musicais — e vamos ajudar-te a decidir.',
+    category: 'Equipamento',
+    date: 'Fevereiro 2025',
+    image: '/fotos/guitarra-electrica.png',
+    readTime: '4 min',
+  },
+  {
+    slug: 'tocar-em-palco-antes-de-estares-pronto',
+    title: '5 Razões para Tocar em Palco Antes de Estares "Pronto"',
+    excerpt: 'Muitos músicos adiam a sua primeira performance à espera de serem suficientemente bons. Descobre porque essa é a maior armadilha da aprendizagem musical.',
+    category: 'Performance',
+    date: 'Janeiro 2025',
+    image: '/fotos/performance-constante.png',
+    readTime: '6 min',
+  },
+];
+---
+
+<BaseLayout
+  title="Blog | Academia de Guitarra do Porto"
+  description="Artigos sobre aprendizagem musical, guitarra, performance e carreira na música. Dicas e guias da Academia de Guitarra do Porto."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" aria-label="Blog">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="/fotos/homepage/11.png"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/78"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">CONHECIMENTO & INSPIRAÇÃO</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none fade-in-up">
+        BLOG
+      </h1>
+      <div class="double-divider w-24 mx-auto mt-4 fade-in-up"><span></span><span></span></div>
+      <p class="font-heading text-xl text-agp-muted tracking-widest uppercase mt-4 fade-in-up">
+        ARTIGOS PARA MÚSICOS EM FORMAÇÃO
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ POSTS ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-label="Artigos do blog">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Artigos Recentes</span>
+        <h2 class="section-title fade-in-up">ÚLTIMAS PUBLICAÇÕES</h2>
+        <SectionDivider />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger-children max-w-6xl mx-auto">
+        {posts.map((post) => (
+          <article class="card-dark overflow-hidden group fade-in-up flex flex-col">
+            <a href={`/blog/${post.slug}`} class="block overflow-hidden aspect-video">
+              <img
+                src={post.image}
+                alt={post.title}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <div class="p-6 flex flex-col flex-1">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="section-label !mb-0">{post.category}</span>
+                <span class="text-agp-muted text-xs">·</span>
+                <span class="text-agp-muted text-xs font-body">{post.readTime} de leitura</span>
+              </div>
+              <h2 class="font-heading text-xl text-white tracking-wide leading-tight mb-3 group-hover:text-agp-red transition-colors duration-200 flex-1">
+                <a href={`/blog/${post.slug}`}>{post.title}</a>
+              </h2>
+              <p class="text-agp-muted text-sm leading-relaxed mb-6">{post.excerpt}</p>
+              <div class="flex items-center justify-between mt-auto">
+                <span class="text-agp-muted text-xs font-body">{post.date}</span>
+                <a href={`/blog/${post.slug}`} class="text-agp-red font-heading text-xs tracking-widest uppercase hover:underline">
+                  LER MAIS →
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+---
+
+<BaseLayout
+  title="Preços & Planos | Academia de Guitarra do Porto"
+  description="Conheça os planos da Academia de Guitarra do Porto — Básico 112€/mês, Músico 140€/mês, Pack 130€/4 aulas. Aulas presenciais e online ao mesmo preço."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" aria-label="Preços e Planos">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="/fotos/homepage/5.png"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/78"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">TRANSPARÊNCIA TOTAL</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none fade-in-up">
+        PREÇOS
+      </h1>
+      <div class="double-divider w-24 mx-auto mt-4 fade-in-up"><span></span><span></span></div>
+      <p class="font-heading text-xl text-agp-muted tracking-widest uppercase mt-4 fade-in-up">
+        PRESENCIAL OU ONLINE — O MESMO PREÇO.
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ PLANS ════════════ -->
+  <section class="py-24 bg-[#080808]" aria-labelledby="precos-title">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12">
+
+      <div class="text-center mb-16">
+        <SectionDivider />
+        <span class="section-label">Cursos Mensais</span>
+        <h2 id="precos-title" class="section-title fade-in-up">OS NOSSOS PLANOS</h2>
+        <SectionDivider />
+        <p class="section-subtitle mt-6 fade-in-up">SEM SURPRESAS. SEM LETRAS PEQUENAS.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-5xl mx-auto fade-in-up items-stretch">
+
+        <!-- BÁSICO -->
+        <div class="flex flex-col border border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+          <h3 class="font-heading text-4xl text-white tracking-widest mb-6">BÁSICO</h3>
+          <div class="mb-6">
+            <span class="font-heading text-6xl text-agp-red leading-none">112</span>
+            <span class="font-heading text-2xl text-agp-red">€</span>
+            <span class="text-agp-muted text-sm tracking-widest block mt-1">/MÊS</span>
+          </div>
+          <div class="double-divider w-full mb-6"><span></span><span></span></div>
+          <ul class="flex flex-col gap-4 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">4 aulas individuais</strong> de 1h/mês</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário fixo</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+          </ul>
+          <a href="/contactos" class="block text-center border border-white/30 text-white font-heading tracking-widest uppercase py-4 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+        </div>
+
+        <!-- MÚSICO -->
+        <div class="flex flex-col border border-agp-red bg-agp-red/5 relative md:-mt-6 md:-mb-0">
+          <div class="bg-agp-red py-3 px-4 flex items-center justify-center gap-2">
+            <span class="text-yellow-400 text-xs">★</span>
+            <span class="font-heading text-white text-xs tracking-[0.25em]">MAIS POPULAR</span>
+          </div>
+          <div class="p-8 md:p-10 flex flex-col flex-1">
+            <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+            <h3 class="font-heading text-4xl text-white tracking-widest mb-6">MÚSICO</h3>
+            <div class="mb-6">
+              <span class="font-heading text-6xl text-agp-red leading-none">140</span>
+              <span class="font-heading text-2xl text-agp-red">€</span>
+              <span class="text-agp-muted text-sm tracking-widest block mt-1">/MÊS</span>
+            </div>
+            <div class="double-divider w-full mb-6"><span></span><span></span></div>
+            <ul class="flex flex-col gap-4 flex-1 mb-8">
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">8 aulas de 1h/mês</strong> — o dobro!</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">4 individuais</strong> + <strong class="text-white">4 em turma</strong></span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário fixo</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">Cadeira Complementar</strong></span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+              <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+            </ul>
+            <a href="/contactos" class="block text-center bg-agp-red text-white font-heading tracking-widest uppercase py-4 text-sm hover:bg-agp-red-hover transition-colors duration-300">ESCOLHER</a>
+          </div>
+        </div>
+
+        <!-- PACK -->
+        <div class="flex flex-col border border-white/10 bg-white/[0.02] p-8 md:p-10">
+          <span class="font-heading text-xs tracking-[0.3em] text-agp-muted uppercase mb-4 block">Plano</span>
+          <h3 class="font-heading text-4xl text-white tracking-widest mb-6">PACK</h3>
+          <div class="mb-6">
+            <span class="font-heading text-6xl text-agp-red leading-none">130</span>
+            <span class="font-heading text-2xl text-agp-red">€</span>
+            <span class="text-agp-muted text-sm tracking-widest block mt-1">/4 AULAS</span>
+          </div>
+          <div class="double-divider w-full mb-6"><span></span><span></span></div>
+          <ul class="flex flex-col gap-4 flex-1 mb-8">
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted"><strong class="text-white">Aulas à vontade</strong> sem mensalidade</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Presencial & Online</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Horário <strong class="text-white">flexível</strong></span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Concertos & Jam Sessions</span></li>
+            <li class="flex items-start gap-3 text-sm"><span class="text-agp-red mt-0.5 shrink-0">●</span><span class="text-agp-muted">Comunidade Bunker</span></li>
+          </ul>
+          <a href="/contactos" class="block text-center border border-white/30 text-white font-heading tracking-widest uppercase py-4 text-sm hover:border-agp-red hover:text-agp-red transition-colors duration-300">ESCOLHER</a>
+        </div>
+
+      </div>
+
+      <!-- Urgency -->
+      <p class="text-center text-agp-muted text-sm mt-8 fade-in-up">
+        <span class="text-agp-red font-heading tracking-widest">⚠ VAGAS LIMITADAS</span> — As inscrições para o próximo trimestre estão a fechar. Garante o teu lugar.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ════════════ EXPERIENCE PACK ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-labelledby="experience-title">
+    <div class="container mx-auto px-4 md:px-8 max-w-4xl text-center">
+
+      <span class="section-label">Sem Compromisso</span>
+      <h2 id="experience-title" class="section-title fade-in-up mb-4">EXPERIMENTA ANTES<br class="hidden md:block" /> DE TE INSCREVERES</h2>
+      <div class="double-divider w-32 mx-auto"><span></span><span></span></div>
+      <p class="text-agp-muted text-lg leading-relaxed max-w-2xl mx-auto mt-6 mb-16 fade-in-up">
+        Não tens a certeza se a Academia de Guitarra do Porto é para ti? Experimenta com um <strong class="text-white">Experience Pack</strong> — aulas avulsas sem qualquer compromisso de inscrição.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 fade-in-up stagger-children">
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">1 Aula</span>
+          <p class="font-heading text-6xl text-white leading-none">35<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Aula individual de 1h</p>
+        </div>
+        <div class="card-dark p-8 flex flex-col items-center gap-4">
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">2 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">55<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 15€ vs. avulso</p>
+        </div>
+        <div class="card-dark border-agp-red/40 p-8 flex flex-col items-center gap-4 relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-agp-red text-white font-heading text-xs tracking-widest uppercase px-4 py-1">Mais Popular</span>
+          <span class="font-heading text-agp-muted tracking-widest text-sm uppercase">3 Aulas</span>
+          <p class="font-heading text-6xl text-white leading-none">75<span class="text-agp-red text-3xl">€</span></p>
+          <p class="text-agp-muted text-sm">Poupa 30€ vs. avulso</p>
+        </div>
+      </div>
+
+      <div class="mt-12 fade-in-up">
+        <a href="/contactos" class="btn-primary-lg">COMPRAR EXPERIENCE PACK</a>
+        <p class="text-agp-muted text-sm mt-4">Sem inscrição. Sem mensalidade. Só música.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ SNIPPET ════════════ -->
+  <section class="py-16 bg-[#080808]" aria-label="Dúvidas sobre preços">
+    <div class="container mx-auto px-4 md:px-8 max-w-3xl">
+      <h2 class="font-heading text-2xl text-white tracking-widest text-center mb-8 fade-in-up">PERGUNTAS SOBRE PREÇOS</h2>
+      <div class="flex flex-col gap-3">
+        {[
+          { q: 'Posso mudar de plano depois de me inscrever?', a: 'Sim, a qualquer momento com aviso prévio.' },
+          { q: 'Os preços são iguais para presencial e online?', a: 'Sim. Aplicamos o mesmo preço independentemente do formato escolhido.' },
+          { q: 'Existe alguma taxa de inscrição?', a: 'Contacta-nos para informações atualizadas sobre condições de inscrição.' },
+        ].map((item) => (
+          <div class="border border-white/10 p-6 fade-in-up">
+            <p class="font-heading text-white tracking-wide mb-2">{item.q}</p>
+            <p class="text-agp-muted text-sm">{item.a}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-8 fade-in-up">
+        <a href="/faq" class="text-agp-red font-heading tracking-widest text-sm hover:underline uppercase">Ver todas as perguntas →</a>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm />
+
+</BaseLayout>

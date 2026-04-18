@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionDivider from '../components/SectionDivider.astro';
+import ContactForm from '../components/ContactForm.astro';
+
+const faqs = [
+  {
+    category: 'INSCRIÇÃO & ACESSO',
+    items: [
+      {
+        q: 'Preciso de ter experiência prévia para me inscrever?',
+        a: 'Não. Aceitamos alunos de todos os níveis, desde quem nunca tocou um instrumento até músicos com anos de prática que querem evoluir. O nosso método adapta-se ao teu ponto de partida.',
+      },
+      {
+        q: 'Qual é a idade mínima para frequentar a academia?',
+        a: 'Aceitamos alunos a partir dos 3 anos. Não há idade máxima. Temos alunos de todas as idades e faixas etárias.',
+      },
+      {
+        q: 'Como me posso inscrever?',
+        a: 'Podes inscrever-te online através do formulário de contacto, por telefone (+351 919 127 019) ou visitando-nos presencialmente na Rua Afonso Lopes Vieira 186, Porto.',
+      },
+      {
+        q: 'Posso visitar as instalações antes de tomar uma decisão?',
+        a: 'Claro! Contacta-nos para agendar uma visita e ficar a conhecer as nossas salas, estúdio e sala de eventos. Terás também a oportunidade de falar com um dos nossos professores.',
+      },
+    ],
+  },
+  {
+    category: 'PLANOS & PREÇOS',
+    items: [
+      {
+        q: 'Qual a diferença entre o Plano Básico e o Plano Músico?',
+        a: 'O Plano Básico inclui 4 aulas individuais de 1h por mês (112€). O Plano Músico inclui 8 aulas de 1h por mês — 4 individuais + 4 em turma (140€). É o dobro do tempo de aulas ao preço de +28€.',
+      },
+      {
+        q: 'O que é o Experience Pack?',
+        a: 'O Experience Pack são aulas avulso sem qualquer compromisso de inscrição ou mensalidade. Ideal para experimentares antes de decidires: 1 aula por 35€, 2 aulas por 55€ ou 3 aulas por 75€.',
+      },
+      {
+        q: 'O que é a Cadeira Complementar incluída no Plano Músico?',
+        a: 'A Cadeira Complementar é um módulo extra (teoria, songwriting, treino auditivo, produção, combo, coro) que complementa as tuas aulas de instrumento. Está incluída no Plano Músico sem custo adicional.',
+      },
+      {
+        q: 'Os preços incluem o instrumento?',
+        a: 'Os instrumentos para uso durante as aulas estão disponíveis na academia. Para treinar em casa, recomendamos que tenhas o teu próprio instrumento, mas não é obrigatório para começar.',
+      },
+      {
+        q: 'Existe alguma taxa de inscrição?',
+        a: 'Contacta-nos para informações atualizadas sobre taxas e condições de inscrição. Estamos disponíveis por telefone, email ou através do formulário.',
+      },
+      {
+        q: 'Posso mudar de plano depois de me inscrever?',
+        a: 'Sim. Podes fazer upgrade ou downgrade do teu plano a qualquer momento. Basta contactar-nos com antecedência para ajustarmos a partir do mês seguinte.',
+      },
+    ],
+  },
+  {
+    category: 'AULAS & MÉTODO',
+    items: [
+      {
+        q: 'Que instrumentos ensinam?',
+        a: 'Guitarra elétrica, guitarra acústica, guitarra clássica, baixo elétrico, bateria, piano, voz, violino, saxofone, flauta transversal, etc. Contacta-nos se tens interesse num instrumento específico.',
+      },
+      {
+        q: 'Como são estruturadas as aulas individuais?',
+        a: 'Cada aula tem a duração de 1 hora e é completamente personalizada aos teus objetivos. O professor adapta o reportório, técnica e teoria ao teu nível e ao que queres aprender.',
+      },
+      {
+        q: 'O que são as aulas em turma do Plano Músico?',
+        a: 'São aulas em grupo reduzido onde trabalhas a musicalidade em conjunto (teoria, songwriting, treino auditivo, produção, combo, coro). Complementam as aulas individuais e preparam-te para tocar com outros músicos.',
+      },
+      {
+        q: 'Em quanto tempo consigo tocar a minha primeira música?',
+        a: 'Com dedicação e prática regular, a maioria dos alunos toca a sua primeira música em menos de 1 mês. O nosso método foca-se em resultados práticos desde a primeira aula.',
+      },
+      {
+        q: 'Preciso de ter guitarra em casa para praticar?',
+        a: 'Recomendamos vivamente que praticas em casa entre aulas, faz uma diferença enorme na evolução. No entanto, para começar, podes usar os instrumentos da academia nas aulas.',
+      },
+    ],
+  },
+  {
+    category: 'JAM SESSIONS & PERFORMANCES',
+    items: [
+      {
+        q: 'O que são as Jam Sessions e posso participar?',
+        a: 'As Jam Sessions são sessões mensais abertas a todos os alunos, independentemente do nível. São momentos descontraídos para tocar em conjunto, improvisar e ganhar confiança em palco.',
+      },
+      {
+        q: 'Como funcionam os concertos de alunos?',
+        a: 'Realizamos 2 audições por ano onde todos os alunos têm a oportunidade de tocar ao vivo perante família e amigos, com sistema de som profissional e fotografia. A participação é opcional mas altamente recomendada.',
+      },
+      {
+        q: 'Tenho de participar nos eventos para me manter inscrito?',
+        a: 'Não. As Jam Sessions e concertos são oportunidades, não obrigações. Participes ou não, o teu lugar na academia é garantido.',
+      },
+    ],
+  },
+  {
+    category: 'LOCALIZAÇÃO & INSTALAÇÕES',
+    items: [
+      {
+        q: 'Onde fica a academia?',
+        a: 'Rua Afonso Lopes Vieira 186, 4100-020 Porto. Estamos facilmente acessíveis de transportes públicos e há estacionamento disponível na área.',
+      },
+      {
+        q: 'Quais são os horários de funcionamento?',
+        a: 'Segunda a Sexta: 10h00 – 13h00 e 14h30 – 20h00. Sábado: 09h00 – 14h00.',
+      },
+      {
+        q: 'As aulas são presenciais ou podem ser online?',
+        a: 'Oferecemos aulas presenciais nas nossas instalações e aulas online ao mesmo preço. Podes optar pelo formato que preferires ou combinar os dois.',
+      },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="FAQ — Perguntas Frequentes | Academia de Guitarra do Porto"
+  description="Respostas às perguntas mais frequentes sobre a Academia de Guitarra do Porto — inscrições, planos, preços, aulas e instalações."
+>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" aria-label="Perguntas Frequentes">
+    <div class="absolute inset-0 z-0" aria-hidden="true">
+      <img
+        src="/fotos/homepage/7.png"
+        alt=""
+        class="w-full h-full object-cover object-center"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
+      <div class="absolute inset-0 bg-agp-bg/80"></div>
+    </div>
+    <div class="relative z-10 text-center px-4 pt-24">
+      <span class="section-label text-center block">RESPOSTAS RÁPIDAS</span>
+      <h1 class="font-heading text-7xl md:text-9xl text-white uppercase leading-none fade-in-up">
+        FAQ
+      </h1>
+      <div class="double-divider w-24 mx-auto mt-4 fade-in-up"><span></span><span></span></div>
+      <p class="font-heading text-xl text-agp-muted tracking-widest uppercase mt-4 fade-in-up">
+        TUDO O QUE PRECISAS DE SABER
+      </p>
+    </div>
+  </section>
+
+  <!-- ════════════ FAQ SECTIONS ════════════ -->
+  <section class="py-24 bg-agp-bg" aria-label="Perguntas frequentes">
+    <div class="container mx-auto px-4 md:px-8 lg:px-12 max-w-4xl">
+
+      {faqs.map((section, si) => (
+        <div class={si > 0 ? 'mt-16' : ''}>
+          <div class="flex items-center gap-4 mb-8 fade-in-up">
+            <span class="font-heading text-agp-red text-sm tracking-widest">{String(si + 1).padStart(2, '0')}</span>
+            <h2 class="font-heading text-2xl md:text-3xl text-white tracking-widest">{section.category}</h2>
+          </div>
+          <div class="flex flex-col gap-3 stagger-children" id={`faq-section-${si}`}>
+            {section.items.map((item, i) => (
+              <div class="v-accordion-item border border-white/10 overflow-hidden fade-in-up" id={`faq-${si}-${i}`}>
+                <button
+                  class="v-accordion-trigger w-full flex items-center justify-between p-5 md:p-6 text-left hover:bg-white/3 transition-colors duration-200 group"
+                  aria-expanded="false"
+                  aria-controls={`faq-content-${si}-${i}`}
+                  type="button"
+                >
+                  <span class="font-heading text-base md:text-lg text-white tracking-wide group-hover:text-agp-red transition-colors duration-200 pr-4">
+                    {item.q}
+                  </span>
+                  <svg class="w-5 h-5 text-agp-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 5v14m7-7H5"/>
+                  </svg>
+                </button>
+                <div class="v-accordion-content" id={`faq-content-${si}-${i}`}>
+                  <div class="px-6 pb-6 pt-2 border-t border-white/5">
+                    <p class="text-agp-muted leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <!-- ════════════ STILL HAVE QUESTIONS ════════════ -->
+  <section class="py-20 bg-[#080808]" aria-label="Mais questões">
+    <div class="container mx-auto px-4 md:px-8 text-center max-w-2xl">
+      <SectionDivider />
+      <h2 class="section-title fade-in-up mb-6">AINDA TENS DÚVIDAS?</h2>
+      <p class="text-agp-muted text-lg mb-10 fade-in-up">
+        Fala diretamente connosco — respondemos em menos de 24 horas.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in-up">
+        <a href="/contactos" class="btn-primary-lg">ENVIA-NOS UMA MENSAGEM</a>
+        <a href="tel:+351919127019" class="inline-block border border-white/30 text-white font-heading tracking-widest uppercase px-10 py-4 text-lg hover:border-agp-red hover:text-agp-red transition-colors duration-300">
+          +351 919 127 019
+        </a>
+      </div>
+      <SectionDivider />
+    </div>
+  </section>
+
+  <ContactForm />
+
+</BaseLayout>
+
+<script>
+  const accordionItems = document.querySelectorAll<HTMLElement>('.v-accordion-item');
+  accordionItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.v-accordion-trigger');
+    trigger?.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      accordionItems.forEach((i) => {
+        i.classList.remove('open');
+        i.querySelector('.v-accordion-trigger')?.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>

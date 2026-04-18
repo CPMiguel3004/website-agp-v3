@@ -42,7 +42,7 @@ const {
     >
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label for="nome" class="block text-agp-muted text-sm mb-1.5 font-body">
+          <label for="nome" class="block text-white text-sm mb-1.5 font-body">
             Nome <span class="text-agp-red" aria-hidden="true">*</span>
           </label>
           <input
@@ -51,13 +51,13 @@ const {
             name="nome"
             required
             autocomplete="name"
-            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
+            class="w-full bg-black/60 border border-white/60 text-white px-4 py-3 font-body transition-colors placeholder-white/50 focus:border-agp-red focus:outline-none"
             placeholder="O teu nome completo"
             aria-required="true"
           />
         </div>
         <div>
-          <label for="email" class="block text-agp-muted text-sm mb-1.5 font-body">
+          <label for="email" class="block text-white text-sm mb-1.5 font-body">
             Email <span class="text-agp-red" aria-hidden="true">*</span>
           </label>
           <input
@@ -66,7 +66,7 @@ const {
             name="email"
             required
             autocomplete="email"
-            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
+            class="w-full bg-black/60 border border-white/60 text-white px-4 py-3 font-body transition-colors placeholder-white/50 focus:border-agp-red focus:outline-none"
             placeholder="o.teu@email.com"
             aria-required="true"
           />
@@ -75,7 +75,7 @@ const {
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
-          <label for="telemovel" class="block text-agp-muted text-sm mb-1.5 font-body">
+          <label for="telemovel" class="block text-white text-sm mb-1.5 font-body">
             Telemóvel <span class="text-agp-red" aria-hidden="true">*</span>
           </label>
           <input
@@ -85,19 +85,19 @@ const {
             required
             autocomplete="tel"
             aria-required="true"
-            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors placeholder-white/60 focus:border-agp-red focus:outline-none"
+            class="w-full bg-black/60 border border-white/60 text-white px-4 py-3 font-body transition-colors placeholder-white/50 focus:border-agp-red focus:outline-none"
             placeholder="+351 912 345 678"
           />
         </div>
         <div>
-          <label for="assunto" class="block text-agp-muted text-sm mb-1.5 font-body">
+          <label for="assunto" class="block text-white text-sm mb-1.5 font-body">
             Assunto <span class="text-agp-red" aria-hidden="true">*</span>
           </label>
           <select
             id="assunto"
             name="assunto"
             required
-            class="w-full bg-white/10 border border-white/40 text-white px-4 py-3 font-body transition-colors focus:border-agp-red focus:outline-none"
+            class="w-full bg-black/60 border border-white/60 text-white px-4 py-3 font-body transition-colors focus:border-agp-red focus:outline-none"
             aria-required="true"
           >
             <option value="" disabled selected class="bg-agp-bg text-agp-muted">
@@ -105,7 +105,7 @@ const {
             </option>
             <option value="inscricao" class="bg-agp-bg">Inscrição</option>
             <option value="informacoes" class="bg-agp-bg">Informações</option>
-            <option value="aula-experimental" class="bg-agp-bg">Aula Experimental</option>
+            <option value="experience-pack" class="bg-agp-bg">Experience Pack</option>
             <option value="parceria" class="bg-agp-bg">Parceria</option>
             <option value="outro" class="bg-agp-bg">Outro</option>
           </select>
@@ -113,7 +113,7 @@ const {
       </div>
 
       <div>
-        <label for="mensagem" class="block text-agp-muted text-sm mb-1.5 font-body">
+        <label for="mensagem" class="block text-white text-sm mb-1.5 font-body">
           Mensagem <span class="text-agp-red" aria-hidden="true">*</span>
         </label>
         <textarea
@@ -125,6 +125,21 @@ const {
           placeholder="Escreve a tua mensagem aqui..."
           aria-required="true"
         ></textarea>
+      </div>
+
+      <!-- RGPD Consent -->
+      <div class="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="rgpd"
+          name="rgpd"
+          required
+          aria-required="true"
+          class="mt-1 w-4 h-4 accent-agp-red shrink-0 cursor-pointer"
+        />
+        <label for="rgpd" class="text-white/70 text-sm font-body leading-relaxed cursor-pointer">
+          Li e aceito a <a href="/privacidade" target="_blank" class="text-agp-red hover:underline">Política de Privacidade</a>. Consinto o tratamento dos meus dados pessoais para resposta ao meu pedido.
+        </label>
       </div>
 
       <button
