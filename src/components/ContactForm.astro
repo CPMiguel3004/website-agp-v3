@@ -213,12 +213,8 @@ const {
         throw new Error('Server responded with an error');
       }
     } catch {
-      // Fallback: mailto link
-      const subject = encodeURIComponent(`[AGP] ${data.assunto || 'Contacto'}`);
-      const body = encodeURIComponent(
-        `Nome: ${data.nome}\nEmail: ${data.email}\nTelemóvel: ${data.telemovel || 'N/A'}\nAssunto: ${data.assunto}\n\n${data.mensagem}`
-      );
-      window.location.href = `mailto:info@academiaguitarraporto.pt?subject=${subject}&body=${body}`;
+      errorMsg?.classList.remove('hidden');
+      successMsg?.classList.add('hidden');
     } finally {
       if (btnText) btnText.classList.remove('invisible');
       if (btnLoading) btnLoading.classList.add('hidden');
