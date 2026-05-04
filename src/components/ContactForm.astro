@@ -217,11 +217,15 @@ const {
 
     try {
       // Replace with your Cloudflare Worker URL when deployed
-      const WORKER_URL = 'https://api.academiaguitarraporto.pt/contact.php';
-      const response = await fetch(WORKER_URL, {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: 'a83c73b3-b9ff-4c0f-9520-7fd97fe59707',
+          subject: `[AGP] Nova mensagem — ${data.assunto}`,
+          from_name: 'Academia de Guitarra do Porto',
+          ...data,
+        }),
       });
 
       if (response.ok) {
