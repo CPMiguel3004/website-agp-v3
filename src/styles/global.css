@@ -32,10 +32,12 @@
 @layer components {
   .btn-primary {
     @apply bg-agp-red text-white font-heading tracking-widest uppercase px-8 py-3 hover:bg-agp-red-hover transition-colors duration-300 inline-block cursor-pointer border-0;
+    min-height: 44px;
   }
 
   .btn-primary-lg {
     @apply bg-agp-red text-white font-heading tracking-widest uppercase px-10 py-4 text-lg hover:bg-agp-red-hover transition-colors duration-300 inline-block cursor-pointer border-0;
+    min-height: 48px;
   }
 
   .double-divider {
@@ -51,11 +53,11 @@
   }
 
   .section-title {
-    @apply font-heading text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-none;
+    @apply font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-white uppercase leading-none;
   }
 
   .section-subtitle {
-    @apply font-heading text-lg md:text-xl text-agp-muted tracking-widest uppercase leading-relaxed;
+    @apply font-heading text-base sm:text-lg md:text-xl text-agp-muted tracking-widest uppercase leading-relaxed;
   }
 
   .card-dark {
@@ -110,7 +112,7 @@
 .stagger-children > *:nth-child(3) { transition-delay: 0.3s; }
 .stagger-children > *:nth-child(4) { transition-delay: 0.4s; }
 
-/* Horizontal Image Accordion */
+/* Horizontal Image Accordion — desktop */
 .h-accordion {
   display: flex;
   height: 520px;
@@ -172,6 +174,40 @@
 .h-accordion-item.active .item-label {
   opacity: 0;
   pointer-events: none;
+}
+
+/* Horizontal accordion — mobile: simple vertical card stack */
+@media (max-width: 767px) {
+  .h-accordion {
+    flex-direction: column;
+    height: auto;
+    gap: 2px;
+  }
+
+  .h-accordion-item {
+    min-width: unset;
+    min-height: 80px;
+    flex: none !important;
+    transition: none;
+    will-change: auto;
+  }
+
+  .h-accordion-item.active {
+    min-height: 320px;
+    flex: none !important;
+  }
+
+  .h-accordion-item:not(.active) .item-label {
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(to top, rgba(13, 13, 13, 0.95) 0%, transparent 100%);
+    display: block;
+  }
+
+  .h-accordion-item .item-detail {
+    padding: 1.25rem;
+  }
 }
 
 /* Vertical accordion for instalações/jams */
