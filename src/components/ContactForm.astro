@@ -206,7 +206,7 @@ const {
 
     try {
       // Replace with your Cloudflare Worker URL when deployed
-      const WORKER_URL = '/api/contact';
+      const WORKER_URL = 'https://api.academiaguitarraporto.pt/contact.php';
       const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
