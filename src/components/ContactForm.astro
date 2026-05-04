@@ -125,6 +125,13 @@ const {
         ></textarea>
       </div>
 
+      <!-- Honeypot — invisible to humans, filled by bots -->
+      <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
+      </div>
+      <!-- Timestamp — validates form wasn't submitted instantly by a bot -->
+      <input type="hidden" name="form_time" id="form_time" value="" />
+
       <!-- RGPD Consent -->
       <div class="flex items-start gap-3">
         <input
@@ -181,6 +188,10 @@ const {
   const errorMsg = document.getElementById('form-error');
   const btnText = document.getElementById('btn-text');
   const btnLoading = document.getElementById('btn-loading');
+
+  // Set form load timestamp for bot detection
+  const timeField = document.getElementById('form_time') as HTMLInputElement | null;
+  if (timeField) timeField.value = Date.now().toString();
 
   // Pre-fill subject from URL parameter
   const params = new URLSearchParams(window.location.search);
