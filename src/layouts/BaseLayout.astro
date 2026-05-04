@@ -45,6 +45,15 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academia
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6KMSC8EJB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F6KMSC8EJB');
+    </script>
+
     <!-- Hotjar -->
     <script>
       (function(h,o,t,j,a,r){
