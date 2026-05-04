@@ -182,6 +182,14 @@ const {
   const btnText = document.getElementById('btn-text');
   const btnLoading = document.getElementById('btn-loading');
 
+  // Pre-fill subject from URL parameter
+  const params = new URLSearchParams(window.location.search);
+  const assunto = params.get('assunto');
+  if (assunto) {
+    const select = document.getElementById('assunto') as HTMLSelectElement | null;
+    if (select) select.value = assunto;
+  }
+
   form?.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (!form.checkValidity()) {
