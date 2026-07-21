@@ -29,6 +29,25 @@ function walk(dir) {
 }
 walk(ROOT);
 
+// A .jpg and a .png sharing a stem would both write to the same .webp and one
+// would silently win. That happened once with the teacher portraits, replacing
+// the photos the pages actually used. Refuse to run instead.
+const collisions = new Map();
+for (const file of files) {
+  if (path.basename(file) === OG_IMAGE) continue;
+  const stem = file.replace(/\.(png|jpe?g)$/i, '');
+  collisions.set(stem, [...(collisions.get(stem) ?? []), file]);
+}
+const clashing = [...collisions.values()].filter((v) => v.length > 1);
+if (clashing.length > 0) {
+  console.error('ERRO: ficheiros diferentes convergem para o mesmo .webp:\n');
+  for (const group of clashing) {
+    console.error('  ' + group.map((f) => path.basename(f)).join('  +  '));
+  }
+  console.error('\nRenomeia ou remove um de cada par antes de converter.');
+  process.exit(1);
+}
+
 let before = 0;
 let after = 0;
 const converted = [];
