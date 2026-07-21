@@ -114,18 +114,35 @@ const faqs = [
     ],
   },
 ];
+
+// FAQPage structured data — makes answers eligible for rich results in Google
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.flatMap((group) =>
+    group.items.map((item) => ({
+      '@type': 'Question',
+      name: item.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.a,
+      },
+    }))
+  ),
+};
 ---
 
 <BaseLayout
   title="FAQ — Perguntas Frequentes | Academia de Guitarra do Porto"
   description="Respostas às perguntas mais frequentes sobre a Academia de Guitarra do Porto — inscrições, planos, preços, aulas e instalações."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" aria-label="Perguntas Frequentes">
     <div class="absolute inset-0 z-0" aria-hidden="true">
       <img
-        src="/fotos/homepage/7.png"
+        src="/fotos/homepage/7.webp"
         alt=""
         class="w-full h-full object-cover object-center"
         loading="eager"

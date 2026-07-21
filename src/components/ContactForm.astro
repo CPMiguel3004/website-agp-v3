@@ -3,7 +3,7 @@ interface Props {
   bgImage?: string;
 }
 const {
-  bgImage = '/fotos/contact-bg.png',
+  bgImage = '/fotos/contact-bg.webp',
 } = Astro.props;
 ---
 
@@ -189,6 +189,22 @@ const {
   const btnText = document.getElementById('btn-text');
   const btnLoading = document.getElementById('btn-loading');
 
+  const track = (window as any).agpTrack as
+    | ((n: string, p?: Record<string, unknown>) => void)
+    | undefined;
+
+  // Fire once when the user first engages with the form — measures drop-off
+  let formStarted = false;
+  form?.addEventListener(
+    'input',
+    () => {
+      if (formStarted) return;
+      formStarted = true;
+      track?.('form_start', { form_name: 'contacto' });
+    },
+    { once: false }
+  );
+
   // Set form load timestamp for bot detection
   const timeField = document.getElementById('form_time') as HTMLInputElement | null;
   if (timeField) timeField.value = Date.now().toString();
@@ -225,15 +241,25 @@ const {
       const result = await response.json().catch(() => null);
 
       if (response.ok && result?.success) {
+        // Conversion — this is the event GA4 / Ads optimise against
+        track?.('generate_lead', {
+          method: 'formulario',
+          form_name: 'contacto',
+          assunto: String(data.assunto ?? 'nao_definido'),
+          page_path: window.location.pathname,
+        });
+
         successMsg?.classList.remove('hidden');
         errorMsg?.classList.add('hidden');
         form.reset();
+        formStarted = false;
         if (timeField) timeField.value = Date.now().toString();
       } else {
         throw new Error(result?.message || 'Server responded with an error');
       }
     } catch (err) {
       console.error('Contact form error:', err);
+      track?.('form_error', { form_name: 'contacto' });
       errorMsg?.classList.remove('hidden');
       successMsg?.classList.add('hidden');
     } finally {

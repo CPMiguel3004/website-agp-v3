@@ -17,14 +17,76 @@ const {
   noindex = false,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academiadeguitarradoporto.pt');
+const siteURL = Astro.site ?? new URL('https://academiadeguitarradoporto.pt');
+const canonicalURL = new URL(Astro.url.pathname, siteURL);
+// Open Graph requires absolute URLs — relative paths render without a preview image.
+const ogImageURL = new URL(image, siteURL);
+
+const businessSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['LocalBusiness', 'EducationalOrganization'],
+  '@id': `${siteURL.origin}/#organization`,
+  name: 'Academia de Guitarra do Porto',
+  alternateName: 'AGP — Powered by Bunker',
+  description:
+    'Academia de música no Porto com aulas de guitarra, baixo, bateria, canto e piano. Formação prática, jam sessions mensais e estúdio de gravação profissional.',
+  url: siteURL.origin,
+  logo: `${siteURL.origin}/logo.png`,
+  image: `${siteURL.origin}/fotos/og-default.jpg`,
+  telephone: '+351919127019',
+  email: 'info@academiaguitarraporto.pt',
+  priceRange: '€€',
+  currenciesAccepted: 'EUR',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Rua Afonso Lopes Vieira 186',
+    postalCode: '4100-020',
+    addressLocality: 'Porto',
+    addressRegion: 'Porto',
+    addressCountry: 'PT',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 41.163495,
+    longitude: -8.646709,
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Porto',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '10:00',
+      closes: '13:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '14:30',
+      closes: '20:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '09:00',
+      closes: '14:00',
+    },
+  ],
+  sameAs: [
+    'https://www.instagram.com/academiaguitarraporto/',
+    'https://www.facebook.com/academiaguitarraporto',
+    'https://youtube.com/@academiadeguitarradoporto',
+  ],
+};
 ---
 
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
     <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -43,22 +105,43 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academia
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:alt" content={title} />
     <meta property="og:locale" content="pt_PT" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={image} />
+    <meta name="twitter:image" content={ogImageURL} />
+
+    <!-- Structured data — LocalBusiness (rich results + local SEO) -->
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
 
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6KMSC8EJB"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      // Assigned to window so conversion events can reach GA4 from other scripts.
+      window.gtag = function(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-F6KMSC8EJB');
+    </script>
+
+    <!-- Conversion tracking helper — sends to GA4 via gtag, falls back to GTM dataLayer -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.agpTrack = function (eventName, params) {
+        try {
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, params || {});
+          } else {
+            window.dataLayer.push(Object.assign({ event: eventName }, params || {}));
+          }
+        } catch (e) {
+          /* tracking must never break the page */
+        }
+      };
     </script>
 
     <!-- Hotjar -->
@@ -82,6 +165,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academia
     <!-- Preconnect Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Per-page head content (extra structured data, etc.) -->
+    <slot name="head" />
   </head>
 
   <body class="bg-agp-bg text-white font-body overflow-x-hidden">
@@ -99,6 +185,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academia
 
     <!-- WhatsApp floating button -->
     <a
+      id="whatsapp-float"
       href="https://wa.me/351919127019"
       target="_blank"
       rel="noopener noreferrer"
@@ -109,6 +196,25 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? 'https://academia
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
+
+    <!-- Track WhatsApp + phone + email clicks as leads -->
+    <script>
+      const track = (window as any).agpTrack as
+        | ((n: string, p?: Record<string, unknown>) => void)
+        | undefined;
+
+      document.getElementById('whatsapp-float')?.addEventListener('click', () => {
+        track?.('generate_lead', { method: 'whatsapp', lead_source: 'botao_flutuante' });
+      });
+
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach((el) =>
+        el.addEventListener('click', () => track?.('generate_lead', { method: 'telefone' }))
+      );
+
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]').forEach((el) =>
+        el.addEventListener('click', () => track?.('generate_lead', { method: 'email' }))
+      );
+    </script>
 
     <!-- Intersection Observer for scroll animations -->
     <script>
