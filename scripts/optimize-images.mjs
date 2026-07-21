@@ -59,6 +59,13 @@ for (const file of files) {
 
   // The Open Graph image stays a JPEG, just resized to the 1200x630 social ratio.
   if (name === OG_IMAGE) {
+    const meta = await sharp(file).metadata();
+    // Already at social size — re-cropping would only re-compress it and, if the
+    // art direction was chosen deliberately, throw that framing away.
+    if (meta.width === 1200 && meta.height === 630) {
+      after += sizeBefore;
+      continue;
+    }
     const tmp = file + '.tmp';
     await sharp(file)
       .resize(1200, 630, { fit: 'cover', position: 'attention' })
