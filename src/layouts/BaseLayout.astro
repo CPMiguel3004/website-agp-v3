@@ -17,7 +17,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const siteURL = Astro.site ?? new URL('https://academiadeguitarradoporto.pt');
+const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
 const canonicalURL = new URL(Astro.url.pathname, siteURL);
 // Open Graph requires absolute URLs — relative paths render without a preview image.
 const ogImageURL = new URL(image, siteURL);
