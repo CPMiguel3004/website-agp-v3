@@ -51,40 +51,12 @@ const sinergiaFeatures = [
     image: '/fotos/oportunidade-profissionalizacao.webp',
   },
 ];
-
-// AggregateRating + Review structured data — mirrors the "4.9 · 50+ reviews no
-// Google" claim and the student testimonials shown further down this same page.
-// Shares the @id with the LocalBusiness node from BaseLayout so Google merges them.
-const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
-const reviewSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${siteURL.origin}/#organization`,
-  name: 'Academia de Guitarra do Porto',
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    bestRating: '5',
-    reviewCount: '50',
-  },
-  review: students.map((student) => ({
-    '@type': 'Review',
-    author: { '@type': 'Person', name: student.name },
-    reviewBody: student.quote.replace(/^"|"$/g, ''),
-    reviewRating: {
-      '@type': 'Rating',
-      ratingValue: '5',
-      bestRating: '5',
-    },
-  })),
-};
 ---
 
 <BaseLayout
   title="Academia de Guitarra do Porto | Aprende Música em Porto"
   description="Academia de Guitarra do Porto, powered by Bunker Records: formação musical de qualidade. Do zero à tua primeira música em apenas 1 mês. Inscreve-te já!"
 >
-  <script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} slot="head" />
 
   <!-- ════════════ 1. HERO ════════════ -->
   <section class="relative min-h-screen flex items-center justify-center overflow-hidden" aria-label="Secção principal">
