@@ -147,6 +147,19 @@ const {
         </label>
       </div>
 
+      <!-- Marketing Consent — separado do RGPD acima, opcional, desmarcado por defeito -->
+      <div class="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="marketing_consent"
+          name="marketing_consent"
+          class="mt-1 w-4 h-4 accent-agp-red shrink-0 cursor-pointer"
+        />
+        <label for="marketing_consent" class="text-white/70 text-sm font-body leading-relaxed cursor-pointer">
+          Quero receber novidades, promoções e eventos da Academia por email.
+        </label>
+      </div>
+
       <button
         type="submit"
         class="w-full bg-agp-red text-white font-heading tracking-widest uppercase py-4 text-lg hover:bg-agp-red-hover transition-colors duration-300 mt-2 relative"
@@ -229,7 +242,8 @@ const {
     if (btnLoading) btnLoading.classList.remove('hidden');
 
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const data: Record<string, string> = Object.fromEntries(formData.entries()) as Record<string, string>;
+    data.marketing_consent = formData.has('marketing_consent') ? 'true' : 'false';
 
     try {
       const response = await fetch('/api/contact', {

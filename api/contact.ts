@@ -6,6 +6,10 @@
 //   CONTACT_TO_EMAIL    — inbox that receives the messages (e.g. info@academiaguitarraporto.pt)
 //   CONTACT_FROM_EMAIL  — verified sender (e.g. contacto@academiaguitarraporto.pt;
 //                         use onboarding@resend.dev for testing before domain verification)
+//   AGP_WEBHOOK_URL     — endpoint da app de gestão que grava o lead (ex.:
+//                         https://<backend>.up.railway.app/webhooks/website/contact)
+//   AGP_WEBHOOK_SECRET  — segredo partilhado, tem de ser IGUAL a WEBSITE_WEBHOOK_SECRET
+//                         no backend da app (apps/backend/.env.local ou Railway)
 
 export const config = { runtime: 'edge' };
 
@@ -16,8 +20,41 @@ interface ContactPayload {
   assunto?: string;
   mensagem?: string;
   rgpd?: string;
+  marketing_consent?: string; // 'true' | 'false', enviado pelo cliente já normalizado
   website?: string; // honeypot — must stay empty
   form_time?: string; // page-load timestamp (ms) for bot timing check
+}
+
+// HMAC-SHA256 via Web Crypto (Edge Runtime não tem o módulo "crypto" do Node).
+async function signPayload(secret: string, body: string): Promise<string> {
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(body));
+  return Array.from(new Uint8Array(sig)).map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Envia o lead para a app de gestão (base de dados para follow-up e email marketing).
+// Falha aqui não deve impedir a resposta de sucesso ao utilizador — o email de
+// notificação já foi enviado, é a rede de segurança caso isto falhe.
+async function forwardToAgp(payload: Record<string, unknown>): Promise<void> {
+  const url = process.env.AGP_WEBHOOK_URL;
+  const secret = process.env.AGP_WEBHOOK_SECRET;
+  if (!url || !secret) {
+    console.error('AGP webhook not configured: missing AGP_WEBHOOK_URL / AGP_WEBHOOK_SECRET');
+    return;
+  }
+  const body = JSON.stringify(payload);
+  try {
+    const signature = await signPayload(secret, body);
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-webhook-signature': signature },
+      body,
+    });
+    if (!res.ok) console.error('AGP webhook rejected the lead:', res.status, await res.text());
+  } catch (err) {
+    console.error('AGP webhook call failed:', err);
+  }
 }
 
 const MIN_FILL_TIME_MS = 3000; // forms submitted faster than this are treated as bots
@@ -124,6 +161,15 @@ export default async function handler(request: Request): Promise<Response> {
       console.error('Resend API error:', res.status, detail);
       return json({ success: false, message: 'Não foi possível enviar a mensagem.' }, 502);
     }
+
+    await forwardToAgp({
+      name: nome,
+      email,
+      phone: telemovel,
+      subject: assunto,
+      message: mensagem || null,
+      marketing_consent: data.marketing_consent === 'true',
+    });
 
     return json({ success: true });
   } catch (err) {
