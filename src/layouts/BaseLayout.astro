@@ -118,14 +118,18 @@ const businessSchema = {
     <!-- Structured data — LocalBusiness (rich results + local SEO) -->
     <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F6KMSC8EJB"></script>
+    <!-- Google Analytics — GTM (GTM-PLK3ZVVD) already has its own linked Google tag
+         configured for G-F6KMSC8EJB, which loads gtag.js and sends the pageview itself.
+         We used to ALSO load gtag.js directly and call gtag('config', ...) here, which
+         initialised the same GA4 property a second time and double-counted every
+         pageview. Removed the duplicate library load + config call; kept the gtag()
+         shim below so agpTrack() and the WhatsApp/tel/email/form event tracking further
+         down this file keep working exactly as before — those calls just push onto
+         dataLayer, which GTM's linked Google tag already picks up. -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       // Assigned to window so conversion events can reach GA4 from other scripts.
       window.gtag = function(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-F6KMSC8EJB');
     </script>
 
     <!-- Conversion tracking helper — sends to GA4 via gtag, falls back to GTM dataLayer -->
