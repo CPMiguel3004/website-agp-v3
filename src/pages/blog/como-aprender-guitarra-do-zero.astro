@@ -2,12 +2,29 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionDivider from '../../components/SectionDivider.astro';
 import ContactForm from '../../components/ContactForm.astro';
+
+const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteURL.origin },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteURL.origin}/blog` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Como Aprender Guitarra do Zero',
+      item: `${siteURL.origin}/blog/como-aprender-guitarra-do-zero`,
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Como Aprender Guitarra do Zero — Guia Completo | Academia de Guitarra do Porto"
+  title="Aprender Guitarra do Zero | Academia de Guitarra do Porto"
   description="Nunca tocaste guitarra? Guia completo para iniciantes: por onde começar, o que esperar nos primeiros meses e como evitar os erros mais comuns."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden">
@@ -63,7 +80,7 @@ import ContactForm from '../../components/ContactForm.astro';
 
       <div class="text-center mt-8">
         <p class="text-agp-muted mb-6">Pronto para começar? Experimenta a academia sem compromisso.</p>
-        <a href="/precos" class="btn-primary-lg">VER PLANOS E PREÇOS</a>
+        <a href="/precos" class="btn-primary-lg">VER CURSOS E PREÇOS</a>
       </div>
 
       <div class="mt-12 pt-8 border-t border-white/10">

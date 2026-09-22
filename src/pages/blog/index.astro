@@ -31,12 +31,23 @@ const posts = [
     readTime: '6 min',
   },
 ];
+
+const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteURL.origin },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteURL.origin}/blog` },
+  ],
+};
 ---
 
 <BaseLayout
   title="Blog | Academia de Guitarra do Porto"
   description="Artigos sobre aprendizagem musical, guitarra, performance e carreira na música. Dicas e guias da Academia de Guitarra do Porto."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden" aria-label="Blog">

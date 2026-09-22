@@ -2,12 +2,29 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionDivider from '../../components/SectionDivider.astro';
 import ContactForm from '../../components/ContactForm.astro';
+
+const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteURL.origin },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteURL.origin}/blog` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Tocar em Palco Antes de Estares Pronto',
+      item: `${siteURL.origin}/blog/tocar-em-palco-antes-de-estares-pronto`,
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="5 Razões para Tocar em Palco Antes de Estares 'Pronto' | Academia de Guitarra do Porto"
+  title="5 Razões para Tocar em Palco | Academia de Guitarra do Porto"
   description="Muitos músicos adiam a primeira performance à espera de serem suficientemente bons. Descobre porque essa é a maior armadilha da aprendizagem musical."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden">

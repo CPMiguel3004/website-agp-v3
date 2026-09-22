@@ -2,12 +2,29 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import SectionDivider from '../../components/SectionDivider.astro';
 import ContactForm from '../../components/ContactForm.astro';
+
+const siteURL = Astro.site ?? new URL('https://www.academiaguitarraporto.pt');
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: siteURL.origin },
+    { '@type': 'ListItem', position: 2, name: 'Blog', item: `${siteURL.origin}/blog` },
+    {
+      '@type': 'ListItem',
+      position: 3,
+      name: 'Guitarra Elétrica ou Acústica',
+      item: `${siteURL.origin}/blog/guitarra-eletrica-ou-acustica`,
+    },
+  ],
+};
 ---
 
 <BaseLayout
-  title="Guitarra Elétrica ou Acústica: Qual Escolher para Começar? | Academia de Guitarra do Porto"
+  title="Elétrica ou Acústica? | Academia de Guitarra do Porto"
   description="Elétrica ou acústica? A resposta depende dos teus objetivos musicais. Guia prático para escolheres o instrumento certo para começar."
 >
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
 
   <!-- ════════════ HERO ════════════ -->
   <section class="relative h-[50vh] min-h-[380px] flex items-center justify-center overflow-hidden">

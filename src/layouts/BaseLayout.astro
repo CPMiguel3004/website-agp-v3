@@ -24,7 +24,7 @@ const ogImageURL = new URL(image, siteURL);
 
 const businessSchema = {
   '@context': 'https://schema.org',
-  '@type': ['LocalBusiness', 'EducationalOrganization'],
+  '@type': ['LocalBusiness', 'EducationalOrganization', 'Organization'],
   '@id': `${siteURL.origin}/#organization`,
   name: 'Academia de Guitarra do Porto',
   alternateName: 'AGP — Powered by Bunker',
@@ -144,16 +144,24 @@ const businessSchema = {
       };
     </script>
 
-    <!-- Hotjar -->
+    <!-- Hotjar — loaded after the page settles (not needed for the initial paint,
+         and it was the single biggest contributor to Total Blocking Time in Lighthouse) -->
     <script>
-      (function(h,o,t,j,a,r){
-        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-        h._hjSettings={hjid:6704426,hjsv:6};
-        a=o.getElementsByTagName('head')[0];
-        r=o.createElement('script');r.async=1;
-        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
-        a.appendChild(r);
-      })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      function loadHotjar() {
+        (function(h,o,t,j,a,r){
+          h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+          h._hjSettings={hjid:6704426,hjsv:6};
+          a=o.getElementsByTagName('head')[0];
+          r=o.createElement('script');r.async=1;
+          r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+          a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+      }
+      if (document.readyState === 'complete') {
+        setTimeout(loadHotjar, 3000);
+      } else {
+        window.addEventListener('load', () => setTimeout(loadHotjar, 3000));
+      }
     </script>
 
     <!-- Favicon -->
